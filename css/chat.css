@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    /* Prevent overflow */
+}
+
+.users {
+    display: grid;
+    /* Use grid layout */
+    height: 100vh;
+    width: 20%;
+    background-color: rgba(128, 0, 128, 0.445);
+    grid-template-rows: 1fr 8fr;
+    /* Two rows with different heights */
+}
+
+.heading {
+    width: 100%;
+    border: 1px solid;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    font-size: 2rem;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+}
+
+.list {
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0);
+
+    &>ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1vmin;
+}
+
+ul>li {
+    width: 100%;
+    height: 15% !important;
+    font-size: 80%;
+    background-color: rgba(0, 255, 0, 0.459);
+    margin: 1% 0 0 0;
+    font-family: cursive;
+    font-size: 1rem;
+    padding: 1%;
+    border-radius: 5%;
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+}
+
+ul>li>.name {
+    height: 100%;
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: start; */
+    font-size: 1.5rem;
+    /* background-color: yellow; */
+
+}
+
+ul>li>.profile {
+    height: 100%;
+    border: 1px solid;
+
+    &>img {
+        height: 100%;
+        width: 100%;
+        background-color: red;
+    }
+}

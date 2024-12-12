@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+.info {
+    height: 40%;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.356);
+}
+
+.heading {
+    height: 20%;
+    width: 100%;
+    font-size: 1rem;
+    background-color: red;
+    text-overflow: ellipsis;
+}
+
+.content {
+    height: 80%;
+    width: 100%;
+    background-color: rgba(255, 255, 0, 0.842);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.highlight {
+    color: green !important;
+}
+
+.use {
+    height: 60%;
+    width: 100vw;
+    background-color: rgba(48, 224, 127, 0.404);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1vmin;
+}
+
+.login {
+    height: 100%;
+    background-color: rgba(30, 255, 0, 0.445);
+    transform-origin: left;
+    transition: all 1s ease;
+    padding: 2%;
+
+    &:hover {
+        transform: scaleX(1.1);
+    }
+
+}
+
+
+.signup {
+    height: 100%;
+    background-color: rgba(0, 255, 255, 0.5);
+    transform-origin: right;
+    transition: all 1s ease;
+    padding: 2%;
+
+    &:hover {
+        transform: scaleX(1.1);
+        /* Scale towards the right */
+    }
+}
