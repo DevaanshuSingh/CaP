@@ -1,3 +1,18 @@
+/* For most modern browsers */
+.both-messages {
+    overflow-y: scroll;
+    /* Ensure scrolling works */
+    scrollbar-width: none;
+    /* For Firefox */
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+}
+
+/* 
+.both-messages::-webkit-scrollbar {
+    display: none;  For Chrome, Safari, and Edge 
+} */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,17 +22,15 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    /* Prevent overflow */
+    display: grid;
+    grid-template-columns: 2fr 8fr;
 }
 
 .users {
     display: grid;
-    /* Use grid layout */
     height: 100vh;
-    width: 20%;
     background-color: rgba(128, 0, 128, 0.445);
-    grid-template-rows: 1fr 8fr;
-    /* Two rows with different heights */
+    grid-template-rows: 1fr 9fr;
 }
 
 .heading {
@@ -32,7 +45,7 @@ body {
 
 .list {
     width: 100%;
-    background-color: rgba(255, 0, 0, 0);
+    background-color: rgb(0, 0, 0);
 
     &>ul {
         list-style-type: none;
@@ -81,4 +94,221 @@ ul>li>.profile {
         width: 100%;
         background-color: red;
     }
+}
+
+.chat-section {
+    height: 100vh;
+    /* background-color: rgba(0, 26, 255, 0.637); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.self {
+    height: 10%;
+    width: 100%;
+    /* background-color: rgba(0, 0, 0, 0.322); */
+}
+
+.inner-chat {
+    height: 90%;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner-chat>.chat-to {
+    height: 99%;
+    width: 100%;
+    /* background-color: rgba(0, 255, 21, 0.589); */
+    display: grid;
+    grid-template-rows: 9fr 1fr;
+    grid-template-rows: 85% 15%;
+    /* Allocate 85% for show-message, 15% for send-messages */
+    /**/
+    /**/
+}
+
+.inner-chat>.chat-to>.show-message {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sections {
+    background-color: gold;
+    /* display: grid;
+    grid-template-rows: 1fr 9fr; */
+}
+
+.inner-chat>.chat-to>.show-message>.both-messages {
+    height: 100%;
+    width: 98%;
+    border: 1px solid green;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* padding: 1%; */
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 47.5% 47.5%;
+    gap: 5%;
+}
+
+/*left left left left left left left left left left left left left left left section*/
+
+.inner-chat>.chat-to>.show-message>.both-messages>.message-sent>.all-texts {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.493);
+}
+
+.inner-chat>.chat-to>.show-message>.both-messages>.message-sent>.all-texts>.go {
+    max-width: 80%;
+    min-width: 5%;
+    min-height: 5%;
+    background-color: rgba(255, 255, 255, 0.527);
+    /* border: 1px solid red; */
+    width: fit-content;
+    height: fit-content;
+    margin: 5% 0 0 2%;
+    border-radius: 5%;
+    display: inline-block;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+}
+
+.inner-chat>.chat-to>.show-message>.both-messages>.message-sent>.all-texts>.go>.icon {
+    width: 100%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.inner-chat>.chat-to>.show-message>.both-messages>.message-sent>.all-texts>.go>.text {
+    background-color: rgb(93, 93, 207);
+    width: 100%;
+}
+
+/*right right right right right right right right right right right right section*/
+
+/*from here*/
+.inner-chat>.chat-to>.show-message>.both-messages>.message-receive>.all-texts {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    /* align-items: end; */
+    justify-content: end;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    /* height: 100%; */
+    /*jab tak go ke divs manage nahi ho jaate tab tak use karna hai*/
+    background-color: rgba(0, 0, 0, 0.178);
+}
+
+#heading {
+    background-color: rgba(0, 0, 255, 0.445);
+    position: relative;
+    left: 0%;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.inner-chat>.chat-to>.show-message>.both-messages>.message-receive>.all-texts>.come {
+    /* max-width: 80%;
+    min-width: 5%;
+    min-height: 5%;
+    background-color: rgba(255, 255, 255, 0.527);
+    border-radius: 5%;
+    display: inline-block;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow: hidden; */
+    background-color: rgba(255, 255, 255, 0.527);
+    min-width: 5%;
+    min-height: 5%;
+    max-width: 80%;
+    width: fit-content;
+    height: fit-content;
+    margin: 5% 0 0 2%;
+    border-radius: 5%;
+    display: inline-block;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+}
+
+.inner-chat>.chat-to>.show-message>.both-messages>.message-receive>.all-texts>.come>.icon {
+    width: 100%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.inner-chat>.chat-to>.show-message>.both-messages>.message-receive>.all-texts>.come>.text {
+    background-color: rgb(93, 93, 207);
+    width: 100%;
+
+}
+
+/*upto*/
+
+.inner-chat>.chat-to>.send-messages {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner-chat>.chat-to>.send-messages>.text-section {
+    height: 99%;
+    width: 100%;
+    background-color: rgb(101, 70, 148);
+    display: grid;
+    grid-template-columns: 8.5fr .5fr;
+    border-radius: 2%;
+    padding: .5%;
+}
+
+.text-section>input {
+    border-radius: 5%;
+    height: 100%;
+    /* width: 90%; */
+    background-color: rgb(255 255 255 / 46%);
+    /* position: relative; */
+    /* left:2%; */
+    border: none;
+}
+
+.inner-chat>.chat-to>.send-messages>.text-section>.send-image {
+    border-radius: 20%;
+    font-size: 2rem;
+    /* background-color: rgb(0, 255, 98); */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center
 }

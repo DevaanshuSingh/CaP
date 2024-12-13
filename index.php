@@ -22,16 +22,17 @@
                 Chhating With,</i>
         </div>
     </div>
+
     <div class="use">
         <div class="login slides ">
             <form action="" method="GET">
                 <div class="mb-3">
                     <label for="name" class="form-label">Enter Name</label>
-                    <input type="text" class="form-control" id="checkName" name="checkName">
+                    <input type="text" class="form-control" id="checkName" name="checkName" required>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Enter Password</label>
-                    <input type="password" class="form-control" id="password" name="checkPassword">
+                    <input type="password" class="form-control" id="password" name="checkPassword" required>
                 </div>
                 <button type="submit" class="btn btn-primary">CHAT</button>
             </form>
@@ -41,11 +42,11 @@
             <form action="register.php" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="name" class="form-label">Enter Name</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="name" name="name" required>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password">
+                    <input type="password" class="form-control" id="password" name="password" required>
                 </div>
                 <div class="mb-3">
                     <label for="picture" class="form-label"><strong>Choose Profile
@@ -57,15 +58,55 @@
             </form>
         </div>
     </div>
+
+    <div class="review">
+        <table class="table table-dark table-striped">
+
+            <thead>
+                <tr>
+                    <th>User Id</th>
+                    <th>Name</th>
+                    <th>password</th>
+                    <th>Profile</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+
+            <tbody class="bg-success text-white">
+                <?php
+                // Database connection
+                require 'config.php';
+                try {
+                    $stmt = $pdo->query('SELECT * FROM users');
+                    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    foreach ($users as $user) {
+                        $x = "<tr>";
+                        $x .= "<div class='adjust' ><td>" . $user['id'] . ".</td></div>";
+                        $x .= "<div class='adjust' ><td>" . $user['name'] . "</td></div>";
+                        $x .= "<div class='adjust' ><td>" . $user['userPassword'] . "</td></div>";
+                        $x .= "<div class='adjust-image' ><td><img src='" . $user['profile'] . "' alt='Profile Picture' style='width: 100px; height: auto;'></td></div>";
+                        $x .= "<div class='adjust' ><td><button type='submit' name='del' value='" . $user['id'] . "' onclick='truncateTable()' style='background-color: red; color: white'>TRUNCATE</button></td></div>";
+                        $x .= "</tr>";
+                        echo $x;
+                    }
+                } catch (PDOException $e) {
+                    echo 'Database error: ' . $e->getMessage();
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>
 
 <?php
-
 require_once 'config.php';
 if (isset($_GET['checkName'], $_GET['checkPassword'])) {
     $userName = $_GET['checkName'];
