@@ -1,6 +1,27 @@
+/* For most modern browsers */
+* {
+    overflow-y: scroll;
+    /* Ensure scrolling works */
+    scrollbar-width: none;
+    /* For Firefox */
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+}
+
+/* 
+.both-messages::-webkit-scrollbar {
+    display: none;  For Chrome, Safari, and Edge 
+} */
+
 * {
     margin: 0;
     padding: 0;
+
+    &::selection {
+        background-color: rgba(21, 35, 231, 0.562);
+        color: rgb(0, 0, 0);
+
+    }
 }
 
 body {
@@ -19,27 +40,44 @@ body {
     width: 100%;
     font-size: 1rem;
     background-color: red;
-    text-overflow: ellipsis;
+    /* text-overflow: ellipsis; */
+    font-family: "Roboto Condensed", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    &>h1 {
+        margin: 0 0 0 1%;
+    }
 }
 
 .content {
     height: 80%;
     width: 100%;
-    background-color: rgba(255, 255, 0, 0.842);
+    /* background-color: rgba(255, 255, 0, 0.842); */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: "Source Code Pro", monospace;
+    font-optical-sizing: auto;
+    font-weight: 180;
+    font-style: normal;
+    text-transform: uppercase;
+    text-shadow: blue 1px 0 .5vmin;
+
 }
 
 .highlight {
     color: green !important;
+    font-weight: 400;
+
 }
 
 .use {
     height: 60%;
     width: 100vw;
-    background-color: rgba(48, 224, 127, 0.404);
+    /* background-color: rgba(48, 224, 127, 0.404); */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1vmin;
@@ -56,6 +94,9 @@ body {
         transform: scaleX(1.1);
     }
 
+    &>form {
+        background-color: red;
+    }
 }
 
 
@@ -69,5 +110,9 @@ body {
     &:hover {
         transform: scaleX(1.1);
         /* Scale towards the right */
+    }
+
+    &>form {
+        background-color: red;
     }
 }

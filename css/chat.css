@@ -108,7 +108,55 @@ ul>li>.profile {
 .self {
     height: 10%;
     width: 100%;
-    /* background-color: rgba(0, 0, 0, 0.322); */
+    background-color: rgba(0, 0, 0, 0.322);
+    display: grid;
+    grid-template-columns: 47.5% 47.5%;
+    gap: 5%;
+    background-color: rgba(0, 0, 255, 0.6);
+}
+
+.another-info {
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.479);
+    /* border-top-right-radius: 10%; */
+    /* border-bottom-right-radius: 10%; */
+    display: grid;
+    grid-template-columns: 20% 60%;
+    gap: 20%;
+
+    &>.profile-pic {
+        height: 90%;
+        background-color: rgba(194, 194, 52, 0.733);
+        margin: 2% 0% 0 2%;
+    }
+
+    &>.profile-name {
+        height: 90%;
+        background-color: rgba(194, 194, 52, 0.733);
+        margin: .5% 1% 0 0%;
+    }
+}
+
+.my-info {
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.479);
+    /* border-top-left-radius: 10%; */
+    /* border-bottom-left-radius: 10%; */
+    display: grid;
+    grid-template-columns: 20% 60%;
+    gap: 20%;
+
+    &>.profile-pic {
+        height: 90%;
+        background-color: rgba(194, 194, 52, 0.733);
+        margin: 2% 0% 0 2%;
+    }
+
+    &>.profile-name {
+        height: 90%;
+        background-color: rgba(194, 194, 52, 0.733);
+        margin: .5% 1% 0 0%;
+    }
 }
 
 .inner-chat {
