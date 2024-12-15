@@ -27,6 +27,22 @@
 body {
     height: 100vh;
     width: 100vw;
+    /* background-image: url(https://avatars.githubusercontent.com/u/177410658?v=4); */
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
+    /* background-size: contain; */
+    /* filter: blur(2px); */
+}
+
+.background-image-div {
+    position: absolute;
+    /* background-color: red;*/
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    
 }
 
 .info {
@@ -39,7 +55,7 @@ body {
     height: 20%;
     width: 100%;
     font-size: 1rem;
-    background-color: red;
+    /* background-color: red; */
     /* text-overflow: ellipsis; */
     font-family: "Roboto Condensed", sans-serif;
     display: flex;
@@ -81,38 +97,80 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1vmin;
+
+    &>.slides {
+        filter: blur(2vmin);
+        z-index: 1;
+        transition: all 1s ease;
+    }
+
+    &>.slides:hover {
+        filter: none;
+        z-index: 2;
+    }
+}
+
+.use-heading{
+    filter: none !important;
+    background-color: rgba(0, 140, 255, 0.262);
+    /* border-radius: 20%; */
 }
 
 .login {
     height: 100%;
-    background-color: rgba(30, 255, 0, 0.445);
+    /* background-color: rgba(30, 255, 0, 0.445); */
+    background-color: rgba(0, 0, 255, 0.375);
     transform-origin: left;
-    transition: all 1s ease;
     padding: 2%;
+    display: grid;
+    grid-template-rows: 1fr 9fr;
 
     &:hover {
         transform: scaleX(1.1);
     }
 
-    &>form {
-        background-color: red;
+    /* &>form {
+        background-color: rgb(194, 121, 121);
+    } */
+
+    &>.login-heading {
+        /* background-color: aqua; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-family: "Kanit", sans-serif;
     }
 }
 
 
 .signup {
     height: 100%;
-    background-color: rgba(0, 255, 255, 0.5);
+    /* background-color: rgba(0, 255, 255, 0.5); */
+    background-color: rgba(0, 0, 255, 0.375);
     transform-origin: right;
     transition: all 1s ease;
     padding: 2%;
+    display: grid;
+    grid-template-rows: 1fr 9fr;
 
     &:hover {
         transform: scaleX(1.1);
         /* Scale towards the right */
     }
 
-    &>form {
-        background-color: red;
+    /* &>form {
+        background-color: rgb(194, 121, 121);
+    } */
+
+    &>.signup-heading {
+        /* background-color: aqua; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-family: "Kanit", sans-serif;
     }
 }
