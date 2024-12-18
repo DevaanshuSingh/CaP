@@ -25,14 +25,14 @@
             <div class="content">
                 <i>Here You Can <span class="highlight"><strong>Chat</strong></span> Live With Another Person Currently
                     Available In Server,<br>Have Tried to Make This Software User Friendly That's Why
-                    <br><strong>Here</strong> You Are Able to See The Profile Picture Of Self And The Person You Are
+                    <br><strong>Here</strong> You Are Able to See The Profile Picture Of know-about And The Person You Are
                     Chhating With,</i>
             </div>
         </div>
 
         <div class="use">
             <div class="login slides ">
-                <div class="login-heading use-heading"><u>LOGIN</u></div>
+                <div class="login-heading use-heading"><u><strong>LOGIN</strong></u></div>
 
                 <form action="chat.php" method="GET">
                     <div class="mb-3">
@@ -48,7 +48,7 @@
             </div>
 
             <div class="signup slides ">
-                <div class="signup-heading use-heading"><u>SIGNUP</u></div>
+                <div class="signup-heading use-heading"><u><strong>SIGNUP</strong></u></div>
 
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
@@ -121,7 +121,7 @@
 
 
 <?php
-
+//Sign_Uping
 require_once 'config.php';
 
 if (isset($_POST['name'], $_POST['password'])) {

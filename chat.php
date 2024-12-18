@@ -4,31 +4,53 @@ For Hide The Actual Source Code -->
 <?php
 require_once 'config.php';
 if (isset($_GET['checkName'], $_GET['checkPassword'])) {
+    // echo "<script>
+    // alert('Starting Checking');
+    // </script>";
+
     $userName = $_GET['checkName'];
     $userPassword = $_GET['checkPassword'];
+    // echo "<script>
+    // alert('Got_Name: $userName, Got_Pass: $userPassword');
+    // </script>";
+
     try {
+        // echo "<script>
+        // alert('Inside Try Block');
+        // </script>";
+
         $stmt = $pdo->prepare(query: "SELECT * FROM users;");
         $stmt->execute();
         $infos = $stmt->fetchAll();
         $welcomed = false;
+        $matched = false;
+
+        // echo "<script>
+        // alert('Fetched Data: ');
+        // </script>";
+
         if (!empty($infos)) {
+            //     echo "<script>
+            // alert('Data Is Not Empty');
+            // </script>";
             foreach ($infos as $info) {
+                // echo "<script>
+                //         alert('DB--UserInput\\n" . $info['name'] . " -- $userName\\n" . $info['userPassword'] . " -- $userPassword');
+                //     </script>";
                 if ($info['name'] == $userName && $info['userPassword'] == $userPassword) {
-                    if (!$welcomed) {
-                        echo "<script>
+                    $matched = true;
+                    echo "<script>
                             // alert(`User Have Registered (LINE: 19)`);
                         </script>";
-                        $welcomed = true;
-                        break;
-                    }
-
-                } else {
-                    echo "<script>
-                            // alert(`You Haven't Regestered \nPlease Register First (INNER)`);
-                            // window.location.href = 'index.php';
-                        </script>";
+                    break;
                 }
+            }
 
+            if (!$matched) {
+                echo "<script>
+                        alert(`You Haven't Regestered \nPlease Register First (INNER)`);
+                        window.location.href = 'index.php';
+                </script>";
             }
 
             ?>
@@ -39,7 +61,9 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
             <head>
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
-                <title>CHATApp</title>
+                <!-- <title><i>CHAT</i><b>App</b></title> -->
+                <title><i>CHAT<strong>A</strong></i>pp</title>
+
                 <!-- <title>Sri Charcha</title> -->
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
                     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -70,27 +94,29 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                 </div>
 
                 <div class="chat-section">
-                    <div class="self">
-                        <div class="another-info">
+                    <div class="know-about">
+                        <div class="second-person">
                             <div class="profile-pic">
                                 <img src="<?php
-                                //  echo $info['profile'] 
-                                ?>" alt="<?php
-                                //  echo $info['name'] 
-                                ?>">
+                                echo $info['profile']
+                                    ?>" alt="<?php
+                                echo $info['name']
+                                    ?>">
                             </div>
-                            <div class="profile-name"></div>
+                            <div class="profile-name"><?php
+                            echo $info['name']
+                                ?></div>
                         </div>
 
-                        <div class="my-info">
+                        <div class="first-person">
                             <div class="profile-pic">
                                 <img src="<?php
-                                // echo $info['profile'] 
-                                ?>" alt="<?php
-                                // echo $info['name'] 
-                                ?>">
+                                echo $info['profile']
+                                    ?>" alt="<?php
+                                echo $info['name']
+                                    ?>">
                             </div>
-                            <div class="profile-name"></div>
+                            <div class="profile-name">YOU</div>
                         </div>
 
                     </div>
@@ -193,6 +219,7 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                         </div>
                     </div>
                 </div>
+                
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
                     crossorigin="anonymous"></script>

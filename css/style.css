@@ -87,7 +87,7 @@ body {
 .highlight {
     color: green !important;
     font-weight: 400;
-
+    text-shadow:  none !important;
 }
 
 .use {
@@ -110,10 +110,8 @@ body {
     }
 }
 
-.use-heading{
-    filter: none !important;
-    background-color: rgba(0, 140, 255, 0.262);
-    /* border-radius: 20%; */
+.slides>.use-heading{
+    filter:drop-shadow(5);
 }
 
 .login {
