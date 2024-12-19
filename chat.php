@@ -19,42 +19,20 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
         // alert('Inside Try Block');
         // </script>";
 
-        $stmt = $pdo->prepare(query: "SELECT * FROM users;");
-        $stmt->execute();
-        $infos = $stmt->fetchAll();
-        $welcomed = false;
-        $matched = false;
+        $stmt = $pdo->prepare(query: "SELECT * FROM users WHERE name=? AND userPassword=?;");
+        $stmt->execute([$userName, $userPassword]);
+        $existUser = $stmt->fetchAll();
 
-        // echo "<script>
-        // alert('Fetched Data: ');
-        // </script>";
+        if (!empty($existUser)) {
+            echo "<script>
+                        // alert(`User Have Registered (LINE: 19)`);
+                    </script>";
 
-        if (!empty($infos)) {
-            //     echo "<script>
-            // alert('Data Is Not Empty');
-            // </script>";
-            foreach ($infos as $info) {
-                // echo "<script>
-                //         alert('DB--UserInput\\n" . $info['name'] . " -- $userName\\n" . $info['userPassword'] . " -- $userPassword');
-                //     </script>";
-                if ($info['name'] == $userName && $info['userPassword'] == $userPassword) {
-                    $matched = true;
-                    echo "<script>
-                            // alert(`User Have Registered (LINE: 19)`);
-                        </script>";
-                    break;
-                }
-            }
-
-            if (!$matched) {
-                echo "<script>
-                        alert(`You Haven't Regestered \nPlease Register First (INNER)`);
-                        window.location.href = 'index.php';
-                </script>";
-            }
+            $stmt = $pdo->prepare(query: "SELECT * FROM users;");
+            $stmt->execute();
+            $users = $stmt->fetchAll();
 
             ?>
-
             <!doctype html>
             <html lang="en">
 
@@ -78,11 +56,11 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                     <div class="list">
                         <ul>
                             <?php
-                            if (!empty($infos)) {
-                                foreach ($infos as $info) {
+                            if (!empty($users)) {
+                                foreach ($users as $user) {
                                     echo "<li>
-                                                    <div class='name'>" . $info['name'] . "</div>
-                                                    <div class='profile'><img src='" . $info['profile'] . "' alt=''></div>
+                                                    <div class='name'>" . $user['name'] . "</div>
+                                                    <div class='profile'><img src='" . $user['profile'] . "' alt=''></div>
                                                 </li>";
                                 }
                             } else {
@@ -98,27 +76,26 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                         <div class="second-person">
                             <div class="profile-pic">
                                 <img src="<?php
-                                echo $info['profile']
-                                    ?>" alt="<?php
-                                echo $info['name']
+                                echo $user['profile']
+                                    ?>" class="img-fluid" alt="<?php
+                                echo $user['name']
                                     ?>">
                             </div>
                             <div class="profile-name"><?php
-                            echo $info['name']
+                            echo $user['name']
                                 ?></div>
                         </div>
 
                         <div class="first-person">
                             <div class="profile-pic">
                                 <img src="<?php
-                                echo $info['profile']
-                                    ?>" alt="<?php
-                                echo $info['name']
+                                echo $user['profile']
+                                    ?>" class="img-fluid" alt="<?php
+                                echo $user['name']
                                     ?>">
                             </div>
                             <div class="profile-name">YOU</div>
                         </div>
-
                     </div>
 
                     <div class="inner-chat">
@@ -126,7 +103,7 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                             <div class="show-message">
                                 <div class="both-messages">
                                     <div class=" sections message-sent">
-                                        <h6 id="heading"><u>RECEIVED MESSAGES</u> <i class=" icon ri-corner-right-down-fill"></i>
+                                        <!-- <h6 id="heading"><u>RECEIVED MESSAGES</u> <i class=" icon ri-corner-right-down-fill"></i>
                                         </h6>
 
                                         <div class="all-texts">
@@ -174,24 +151,22 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                                                 </div>
                                             </div>
 
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                     <div class="sections message-receive">
-                                        <h6 id="heading"><u>SENT MESSAGES</u> <i class="ri-corner-right-up-fill"></i></h6>
+                                        <!-- <h6 id="heading"><u>SENT MESSAGES</u> <i class="ri-corner-right-up-fill"></i></h6>
 
                                         <div class="all-texts">
                                             <div class="come">
                                                 <div class="icon"><i class="ri-corner-right-up-fill"></i></div>
                                                 <div class="text">
-                                                    <!-- KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK -->
                                                     ko ko k k k ok o sdfg sdgs dgs dgh sdgsdg sg sd gsd gsd gsd gsd gsd g
                                                 </div>
                                             </div>
                                             <div class="come">
                                                 <div class="icon"><i class="ri-corner-right-up-fill"></i></div>
                                                 <div class="text">
-                                                    <!-- KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK -->
                                                     ko ko k k k ok o sdfg sdgs dgs dgh sdgsdg sg sd gsd gsd gsd gsd gsd g
                                                     ko ko k k k ok o sdfg sdgs dgs dgh sdgsdg sg sd gsd gsd gsd gsd gsd g
                                                     ko ko k k k ok o sdfg sdgs dgs dgh sdgsdg sg sd gsd gsd gsd gsd gsd g
@@ -203,23 +178,23 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                                                     ,
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
 
                             <div class="send-messages">
-                                <div class="text-section">
+                                <!-- <div class="text-section">
                                     <input class="message" type="text" name="message">
                                     <div class="send-image">
                                         <div class="btn"><i class="ri-upload-2-fill"></i></div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
                     crossorigin="anonymous"></script>
