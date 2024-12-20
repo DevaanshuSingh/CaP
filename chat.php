@@ -76,8 +76,8 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                         <div class="second-person">
                             <div class="profile-pic">
                                 <img src="<?php
-                                echo $user['profile']
-                                    ?>" class="img-fluid" alt="<?php
+                                // echo $user['profile']
+                                ?>" class="img-fluid" alt="<?php
                                 echo $user['name']
                                     ?>">
                             </div>
@@ -89,8 +89,8 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                         <div class="first-person">
                             <div class="profile-pic">
                                 <img src="<?php
-                                echo $user['profile']
-                                    ?>" class="img-fluid" alt="<?php
+                                // echo $user['profile']
+                                ?>" class="img-fluid" alt="<?php
                                 echo $user['name']
                                     ?>">
                             </div>
@@ -103,12 +103,12 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                             <div class="show-message">
                                 <div class="both-messages">
                                     <div class=" sections message-sent">
-                                        <!-- <h6 id="heading"><u>RECEIVED MESSAGES</u> <i class=" icon ri-corner-right-down-fill"></i>
+                                        <h6 id="heading"><u>SENT MESSAGES</u> <i class=" icon ri-corner-right-down-fill"></i>
                                         </h6>
 
                                         <div class="all-texts">
-                                            <div class="go">
-                                                <div class="icon"><i class=" icon ri-corner-right-down-fill"></i></div>
+                                             <div class="go">
+                                                <!-- <div class="icon"><i class=" icon ri-corner-right-down-fill"></i></div> -->
                                                 <div class="text">
                                                     KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
                                                     ko ko k k k ok o sdfg sdgs dgs dgh sdgsdg sg sd gsd gsd gsd gsd gsd g
@@ -116,13 +116,14 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                                             </div>
 
                                             <div class="go">
-                                                <div class="icon"><i class=" icon ri-corner-right-down-fill"></i></div>
                                                 <div class="text">
-                                                    lorem700
+                                                KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                                                    ko ko k k k ok o sdfg sdgs dgs dgh sdgsdg sg sd gsd gsd gsd gsd gsd g
+
                                                 </div>
                                             </div>
 
-                                            <div class="go">
+                                            <!--<div class="go">
                                                 <div class="icon"><i class=" icon ri-corner-right-down-fill"></i></div>
                                                 <div class="text">
                                                     lorem700
@@ -149,16 +150,15 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                                                 <div class="text">
                                                     lorem700
                                                 </div>
-                                            </div>
-
-                                        </div> -->
+                                            </div> -->
+                                        </div>
                                     </div>
 
                                     <div class="sections message-receive">
-                                        <!-- <h6 id="heading"><u>SENT MESSAGES</u> <i class="ri-corner-right-up-fill"></i></h6>
+                                        <h6 id="heading"><u>RECEIVED MESSAGES</u> <i class="ri-corner-right-up-fill"></i></h6>
 
                                         <div class="all-texts">
-                                            <div class="come">
+                                            <!-- <div class="come">
                                                 <div class="icon"><i class="ri-corner-right-up-fill"></i></div>
                                                 <div class="text">
                                                     ko ko k k k ok o sdfg sdgs dgs dgh sdgsdg sg sd gsd gsd gsd gsd gsd g
@@ -177,19 +177,18 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                                                 <div class="text">
                                                     ,
                                                 </div>
-                                            </div>
-                                        </div> -->
+                                            </div> -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="send-messages">
-                                <!-- <div class="text-section">
-                                    <input class="message" type="text" name="message">
+                                <div class="text-section"><input class="message" type="text" name="message">
                                     <div class="send-image">
-                                        <div class="btn"><i class="ri-upload-2-fill"></i></div>
+                                        <div class="btn"><i class=" icon ri-upload-2-fill"></i></div>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                     </div>

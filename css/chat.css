@@ -26,8 +26,9 @@ body {
     grid-template-columns: 2fr 8fr;
     /* background-color: rgb(221, 65, 65); */
 }
+
 body::-webkit-scrollbar {
-    display:none;
+    display: none;
 }
 
 .users {
@@ -152,20 +153,16 @@ ul>li>.profile>img {
 }
 
 .know-about {
-    /* height: 10%; */
+    /* height: 100%; */
     width: 100%;
     /* background-color: rgb(255, 0, 0); */
     border: 1px solid rgb(251, 255, 0);
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 49% 49%;
     gap: 2%;
     height: auto;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
-
-
-
-
 
 /* .second-person {
     height: 100%;
@@ -205,9 +202,8 @@ ul>li>.profile>img {
         justify-content: start;
     }
 } */
-.first-person,
-.second-person {
-    height: 200px;
+.first-person {
+    height: 100%;
     border: 1px solid red;
     display: grid;
     grid-template-columns: 20% 60%;
@@ -215,19 +211,33 @@ ul>li>.profile>img {
 }
 
 .second-person {
+    height: 100%;
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: 20% 60%;
+    gap: 20%;
+}
+
+.profile-name {
+    border: 1px solid black;
+    display: flex;
+    align-items: end;
+}
+
+.second-person {
     grid-template-columns: 20% 70%;
     gap: 10%;
 }
 
-.first-person > .profile-pic,
-.second-person > .profile-pic {
+.first-person>.profile-pic,
+.second-person>.profile-pic {
     width: 100%;
     height: 100%;
     border: 1px solid black;
     overflow: content;
 }
 
-.profile-pic > img {
+.profile-pic>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -241,11 +251,12 @@ ul>li>.profile>img {
 
 
 
-.profile-pic > img{
+.profile-pic>img {
     width: 100%;
     height: 100%;
     background-color: red;
 }
+
 .inner-chat {
     opacity: 0.9;
     width: 100%;
@@ -271,41 +282,40 @@ ul>li>.profile>img {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
-.sections {
-    /* background-color: gold; */
-    /* display: grid;
-    grid-template-rows: 1fr 9fr; */
-}
 .inner-chat>.chat-to>.show-message>.both-messages {
     height: 100%;
     width: 100%;
     background-color: rgba(0, 128, 0, 0.616);
+    /* border: 1px solid yellowgreen; */
     display: grid;
     grid-template-columns: 5fr 5fr;
     gap: 2%;
 }
+
 /*left left left left left left left left left left left left left left left section*/
-.message-sent{
-    height: 100%;
-    border: 1px solid red;
-}
 .inner-chat>.chat-to>.show-message>.both-messages>.message-sent>.all-texts {
-    display: flex;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    border: 1px solid rgb(255, 0, 0);
+    /* display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: start;
+    justify-content: start; */
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.493);
 }
+
 .inner-chat>.chat-to>.show-message>.both-messages>.message-sent>.all-texts>.go {
-    max-width: 80%;
+    position: relative;
+    top : 0;
+    max-width: 40% !important;
     min-width: 5%;
     min-height: 5%;
+    /* width: 70% ; */
     background-color: rgba(255, 255, 255, 0.527);
-    /* border: 1px solid red; */
+    border: 1px solid red;
     width: fit-content;
     height: fit-content;
     margin: 5% 0 0 2%;
@@ -316,6 +326,7 @@ ul>li>.profile>img {
     white-space: normal;
     overflow: hidden;
 }
+
 .inner-chat>.chat-to>.show-message>.both-messages>.message-sent>.all-texts>.go>.icon {
     width: 100%;
     display: flex;
@@ -324,42 +335,55 @@ ul>li>.profile>img {
     font-size: 1.2rem;
     font-weight: 900;
 }
+
 .inner-chat>.chat-to>.show-message>.both-messages>.message-sent>.all-texts>.go>.text {
     background-color: rgb(93, 93, 207);
     width: 100%;
+    max-width: 100% !important;
+    min-width: 5%;
+    min-height: 5%;
+    width: fit-content;
+
 }
+
+.sections {
+    background-color: rgba(255, 255, 255, 0.2);
+    display: grid;
+    grid-template-rows: 1fr 8fr;
+    gap: 1fr;
+    height: 100%;
+    /* border: 1px solid red; */
+}
+
 /*right right right right right right right right right right right right section*/
 /*from here*/
-.message-receive{
-    height: 100%;
-    border: 1px solid red;
-}
-.inner-chat>.chat-to>.show-message>.both-messages>.message-receive>.all-texts {
-    width: 100%;
 
+.inner-chat>.chat-to>.show-message>.both-messages>.message-receive>.all-texts {
+    border: 1px solid rgb(255, 0, 0);
+    width: 100%;
     display: flex;
     flex-direction: column;
     /* align-items: end; */
     justify-content: end;
-
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: start;
     /* height: 100%; */
     /*jab tak go ke divs manage nahi ho jaate tab tak use karna hai*/
-    background-color: rgba(0, 0, 0, 0.178);
+    /* background-color: rgba(0, 0, 0, 0.178); */
 }
+
 #heading {
-    background-color: rgba(0, 0, 255, 0.445);
+    background-color: rgba(255, 255, 255, 0.1);
     position: relative;
     left: 0%;
     top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 500;
 }
+
 .inner-chat>.chat-to>.show-message>.both-messages>.message-receive>.all-texts>.come {
     /* max-width: 80%;
     min-width: 5%;
@@ -385,6 +409,7 @@ ul>li>.profile>img {
     white-space: normal;
     overflow: hidden;
 }
+
 .inner-chat>.chat-to>.show-message>.both-messages>.message-receive>.all-texts>.come>.icon {
     width: 100%;
     display: flex;
@@ -393,18 +418,21 @@ ul>li>.profile>img {
     font-size: 1.2rem;
     font-weight: 900;
 }
+
 .inner-chat>.chat-to>.show-message>.both-messages>.message-receive>.all-texts>.come>.text {
     background-color: rgb(93, 93, 207);
     width: 100%;
 
-}/*upto*/
+}
+
+/*upto*/
 .inner-chat>.chat-to>.send-messages {
     height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgb(255, 0, 0);
+    border: 1px solid rgb(0, 255, 0);
 }
 
 .inner-chat>.chat-to>.send-messages>.text-section {
@@ -412,13 +440,14 @@ ul>li>.profile>img {
     width: 100%;
     background-color: rgb(101, 70, 148);
     display: grid;
-    grid-template-columns: 8.5fr .5fr;
-    border-radius: 2%;
-    padding: .5%;
+    grid-template-columns: 9.5fr .5fr;
+    /* border-radius: 2%; */
+    /* padding: .5%; */
 }
 
 .text-section>input {
-    border-radius: 5%;
+    /* border-radius: 5%; */
+    /* border: 1px solid black !important; */
     height: 100%;
     /* width: 90%; */
     background-color: rgb(255 255 255 / 46%);
@@ -430,15 +459,27 @@ ul>li>.profile>img {
     font-optical-sizing: auto;
     font-weight: 900;
     font-style: normal;
+
+    &:active{
+        outline: none;
+        border-color:blue !important;
+    }
 }
 
 .inner-chat>.chat-to>.send-messages>.text-section>.send-image {
     border-radius: 20%;
-    font-size: 2rem;
-    /* background-color: rgb(0, 255, 98); */
+    /* border: 1px solid black; */
+    /* border-left: 1px solid black; */
+    font-size: 5rem;
+    background-color: rgb(255 255 255 / 46%);
+
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: rgb(0, 26, 255);
+}
+
+[class*=" ri-"] {
+    font-size: xx-large;
 }
