@@ -21,7 +21,7 @@
 body {
     height: 100%;
     width: 100%;
-    overflow: scroll;
+    overflow: hidden;
     display: grid;
     grid-template-columns: 2fr 8fr;
     /* background-color: rgb(221, 65, 65); */
@@ -33,11 +33,11 @@ body::-webkit-scrollbar {
 
 .users {
     display: grid;
-    height: 100%;
+    height: 100vh;
     background-color: rgba(128, 0, 128, 0.445);
     grid-template-rows: 1fr 9fr;
     overflow: scroll;
-    scrollbar-width: 10px;
+    scrollbar-width: none;
     scrollbar-color: rgba(0, 0, 255, 0.733);
     -ms-overflow-style: none;
 }
@@ -57,7 +57,7 @@ body::-webkit-scrollbar {
 
 .heading {
     width: 100%;
-    border: 1px solid;
+    /* border: 1px solid; */
     display: flex;
     /* align-items: center; */
     justify-content: center;
@@ -126,6 +126,9 @@ ul>li>.name {
 
 ul>li>.profile {
     height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+
     width: 100%;
     /* border: 1px solid; */
     display: flex;
@@ -146,22 +149,19 @@ ul>li>.profile>img {
     height: 100vh;
     content: "section";
     /* background-color: rgba(0, 26, 255, 0.637); */
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     display: grid;
     grid-template-rows: 1fr 8fr;
     gap: 1%;
 }
 
 .know-about {
-    /* height: 100%; */
     width: 100%;
-    /* background-color: rgb(255, 0, 0); */
-    border: 1px solid rgb(251, 255, 0);
     display: grid;
     grid-template-columns: 49% 49%;
     gap: 2%;
     height: auto;
-    /* overflow: hidden; */
+    position: relative;
 }
 
 /* .second-person {
@@ -202,26 +202,24 @@ ul>li>.profile>img {
         justify-content: start;
     }
 } */
-.first-person {
-    height: 100%;
-    border: 1px solid red;
-    display: grid;
-    grid-template-columns: 20% 60%;
-    gap: 20%;
-}
-
+.first-person,
 .second-person {
-    height: 100%;
-    border: 1px solid red;
+    border: 1px solid red; /* Border for visual debugging */
     display: grid;
-    grid-template-columns: 20% 60%;
-    gap: 20%;
+    grid-template-columns: 20% auto; /* 20% for image, remaining for text */
+    gap: 10%; /* Space between image and text */
+    align-items: center; /* Center items vertically */
+    /* height: 100; */
 }
 
 .profile-name {
-    border: 1px solid black;
+    border: 1px solid black; /* Border for visual debugging */
     display: flex;
-    align-items: end;
+    align-items: center; /* Center text vertically */
+    justify-content: start; /* Align text to the start */
+    overflow: visible; /* Ensure content is visible */
+    word-break: break-word; /* Break long words if needed */
+    padding: 10px;
 }
 
 .second-person {
@@ -231,17 +229,19 @@ ul>li>.profile>img {
 
 .first-person>.profile-pic,
 .second-person>.profile-pic {
-    width: 100%;
-    height: 100%;
-    border: 1px solid black;
-    overflow: content;
+    max-width: 100%; /* Ensure the profile picture does not exceed the container */
+    height: 100%; /* Set height to fill the parent container */
+    border: 1px solid black; /* Border for visual debugging */
+    overflow: hidden; /* Hide overflow */
+    display: flex;
+    align-items: center; /* Center image vertically */
+    justify-content: center; 
 }
 
 .profile-pic>img {
-    width: 100%;
+    width: auto;
     height: 100%;
-    object-fit: cover;
-    display: block;
+    object-fit: cover
 }
 
 
@@ -249,13 +249,6 @@ ul>li>.profile>img {
 
 
 
-
-
-.profile-pic>img {
-    width: 100%;
-    height: 100%;
-    background-color: red;
-}
 
 .inner-chat {
     opacity: 0.9;
@@ -293,6 +286,7 @@ ul>li>.profile>img {
     display: grid;
     grid-template-columns: 5fr 5fr;
     gap: 2%;
+    /* display: flex; */
 }
 
 .sections {
@@ -300,30 +294,64 @@ ul>li>.profile>img {
     display: grid;
     grid-template-rows: 1fr 8fr;
     gap: 1fr;
-    height: 100%;
-    &>#heading{
-        /* background-color: rgba(255, 255, 255, 0.2); */
-        border-bottom-left-radius: 20%;
-        border-bottom-right-radius: 20%;
-        display: flex; align-items: center; justify-content: center;
+    height: 100% !important;
+    max-height: 80vh;
+    overflow-y: auto;
+
+    &>#heading {
+        background-color: rgba(85, 69, 69, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
 .sections>.all-texts {
-    border: 1px solid ORANGERED;
-    display: grid;
-    grid-auto-rows: auto;
-    justify-content: center;
-    gap: 10px; 
+    /* border: 1px solid ORANGERED; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    overflow-y: auto;
+    height: 100% !important;
 }
-.sections>.all-texts>.go{
+
+.sections>.all-texts>.go {
     min-height: 5%;
     min-width: 5%;
-    height: 50%;
-    width: 50%;
-    background-color: black;
+    height: max-content;
+    width: max-content;
+    outline: 2px solid rgb(0, 0, 0);
 }
-.sections>.all-texts>.go>.text{
+
+/* .sections {
+    background-color: rgba(255, 255, 255, 0.2);
+    display: grid;
+    grid-template-rows: 1fr 8fr;
+    gap: 1fr;
+    height: 100%; 
+    overflow-y: auto; 
+}
+
+.sections>.all-texts {
+    border: 1px solid ORANGERED;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    overflow-y: auto; 
+    height: 100%; 
+    max-height: 100%; 
+} */
+
+
+
+
+
+
+.sections>.all-texts>.go>.text {
     background-color: red;
     height: 100%;
     width: 100%;
@@ -339,7 +367,7 @@ ul>li>.profile>img {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgb(0, 255, 0);
+    /* border: 1px solid rgb(0, 255, 0); */
 }
 
 .inner-chat>.chat-to>.send-messages>.text-section {

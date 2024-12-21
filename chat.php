@@ -76,7 +76,7 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                         <div class="second-person">
                             <div class="profile-pic">
                                 <img src="<?php
-                                // echo $user['profile']
+                                echo $user['profile']
                                 ?>" class="img-fluid" alt="<?php
                                 echo $user['name']
                                     ?>">
@@ -89,7 +89,7 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                         <div class="first-person">
                             <div class="profile-pic">
                                 <img src="<?php
-                                // echo $user['profile']
+                                echo $user['profile']
                                 ?>" class="img-fluid" alt="<?php
                                 echo $user['name']
                                     ?>">
@@ -105,23 +105,257 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                                     <div class=" sections message-sent">
                                         <h6 id="heading"><u>SENT MESSAGES</u> <i class=" icon ri-corner-right-down-fill"></i>
                                         </h6>
+
                                         <div class="all-texts">
                                             <div class="go">
                                                 <div class="text">
+                                                    Some
                                                 </div>
                                             </div>
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+
+
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Lorem ipsum dolor sit amet.
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+
                                         </div>
                                     </div>
 
                                     <div class="sections message-receive">
                                         <h6 id="heading"><u>RECEIVED MESSAGES</u> <i class="ri-corner-right-up-fill"></i></h6>
                                         <div class="all-texts">
-                                            <!-- <div class="go">
+                                            <div class="go">
                                                 <div class="text">
-                                                    KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                                                    ko ko k k k ok o sdfg sdgs dgs dgh sdgsdg sg sd gsd gsd gsd gsd gsd g
+                                                    Some
                                                 </div>
-                                            </div> -->
+                                            </div>
+
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Lorem ipsum dolor sit amet.
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="go">
+                                                <div class="text">
+                                                    Some
+                                                </div>
+                                            </div>
+                                            
+
                                         </div>
                                     </div>
                                 </div>
