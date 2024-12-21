@@ -105,77 +105,21 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                                     <div class=" sections message-sent">
                                         <h6 id="heading"><u>SENT MESSAGES</u> <i class=" icon ri-corner-right-down-fill"></i>
                                         </h6>
-
                                         <div class="all-texts">
-                                             <div class="go">
-                                                <!-- <div class="icon"><i class=" icon ri-corner-right-down-fill"></i></div> -->
-                                                <div class="text">
-                                                    KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                                                    ko ko k k k ok o sdfg sdgs dgs dgh sdgsdg sg sd gsd gsd gsd gsd gsd g
-                                                </div>
-                                            </div>
-
                                             <div class="go">
                                                 <div class="text">
-                                                KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                                                    ko ko k k k ok o sdfg sdgs dgs dgh sdgsdg sg sd gsd gsd gsd gsd gsd g
-
                                                 </div>
                                             </div>
-
-                                            <!--<div class="go">
-                                                <div class="icon"><i class=" icon ri-corner-right-down-fill"></i></div>
-                                                <div class="text">
-                                                    lorem700
-                                                </div>
-                                            </div>
-                                            <div class="go">
-                                                <div class="icon"><i class=" icon ri-corner-right-down-fill"></i></div>
-                                                <div class="text">
-                                                    lorem700
-                                                </div>
-                                            </div>
-                                            <div class="go">
-                                                <div class="icon"><i class=" icon ri-corner-right-down-fill"></i></div>
-                                                <div class="text">
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam amet provident
-                                                    perspiciatis nemo! Deleniti, voluptatum. Hic accusantium labore molestias
-                                                    adipisci, veritatis ad similique debitis voluptatibus minus laborum quos
-                                                    distinctio aut recusandae dolor itaque culpa at blanditiis explicabo
-                                                    exercitationem ipsam. Nihil deleniti possimus eum quibusdam nesciunt.
-                                                </div>
-                                            </div>
-                                            <div class="go">
-                                                <div class="icon"><i class=" icon ri-corner-right-down-fill"></i></div>
-                                                <div class="text">
-                                                    lorem700
-                                                </div>
-                                            </div> -->
                                         </div>
                                     </div>
 
                                     <div class="sections message-receive">
                                         <h6 id="heading"><u>RECEIVED MESSAGES</u> <i class="ri-corner-right-up-fill"></i></h6>
-
                                         <div class="all-texts">
-                                            <!-- <div class="come">
-                                                <div class="icon"><i class="ri-corner-right-up-fill"></i></div>
+                                            <!-- <div class="go">
                                                 <div class="text">
+                                                    KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
                                                     ko ko k k k ok o sdfg sdgs dgs dgh sdgsdg sg sd gsd gsd gsd gsd gsd g
-                                                </div>
-                                            </div>
-                                            <div class="come">
-                                                <div class="icon"><i class="ri-corner-right-up-fill"></i></div>
-                                                <div class="text">
-                                                    ko ko k k k ok o sdfg sdgs dgs dgh sdgsdg sg sd gsd gsd gsd gsd gsd g
-                                                    ko ko k k k ok o sdfg sdgs dgs dgh sdgsdg sg sd gsd gsd gsd gsd gsd g
-                                                    ko ko k k k ok o sdfg sdgs dgs dgh sdgsdg sg sd gsd gsd gsd gsd gsd g
-                                                </div>
-                                            </div>
-                                            <div class="come">
-                                                <div class="icon"><i class="ri-corner-right-up-fill"></i></div>
-                                                <div class="text">
-                                                    ,
                                                 </div>
                                             </div> -->
                                         </div>

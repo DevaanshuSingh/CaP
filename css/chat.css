@@ -295,137 +295,44 @@ ul>li>.profile>img {
     gap: 2%;
 }
 
-/*left left left left left left left left left left left left left left left section*/
-.inner-chat>.chat-to>.show-message>.both-messages>.message-sent>.all-texts {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    border: 1px solid rgb(255, 0, 0);
-    /* display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start; */
-    width: 100%;
-}
-
-.inner-chat>.chat-to>.show-message>.both-messages>.message-sent>.all-texts>.go {
-    position: relative;
-    top : 0;
-    max-width: 40% !important;
-    min-width: 5%;
-    min-height: 5%;
-    /* width: 70% ; */
-    background-color: rgba(255, 255, 255, 0.527);
-    border: 1px solid red;
-    width: fit-content;
-    height: fit-content;
-    margin: 5% 0 0 2%;
-    border-radius: 5%;
-    display: inline-block;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    overflow: hidden;
-}
-
-.inner-chat>.chat-to>.show-message>.both-messages>.message-sent>.all-texts>.go>.icon {
-    width: 100%;
-    display: flex;
-    /* align-items: center; */
-    justify-content: center;
-    font-size: 1.2rem;
-    font-weight: 900;
-}
-
-.inner-chat>.chat-to>.show-message>.both-messages>.message-sent>.all-texts>.go>.text {
-    background-color: rgb(93, 93, 207);
-    width: 100%;
-    max-width: 100% !important;
-    min-width: 5%;
-    min-height: 5%;
-    width: fit-content;
-
-}
-
 .sections {
     background-color: rgba(255, 255, 255, 0.2);
     display: grid;
     grid-template-rows: 1fr 8fr;
     gap: 1fr;
     height: 100%;
-    /* border: 1px solid red; */
+    &>#heading{
+        /* background-color: rgba(255, 255, 255, 0.2); */
+        border-bottom-left-radius: 20%;
+        border-bottom-right-radius: 20%;
+        display: flex; align-items: center; justify-content: center;
+    }
 }
 
-/*right right right right right right right right right right right right section*/
-/*from here*/
-
-.inner-chat>.chat-to>.show-message>.both-messages>.message-receive>.all-texts {
-    border: 1px solid rgb(255, 0, 0);
+.sections>.all-texts {
+    border: 1px solid ORANGERED;
+    display: grid;
+    grid-auto-rows: auto;
+    justify-content: center;
+    gap: 10px; 
+}
+.sections>.all-texts>.go{
+    min-height: 5%;
+    min-width: 5%;
+    height: 50%;
+    width: 50%;
+    background-color: black;
+}
+.sections>.all-texts>.go>.text{
+    background-color: red;
+    height: 100%;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    /* align-items: end; */
-    justify-content: end;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    /* height: 100%; */
-    /*jab tak go ke divs manage nahi ho jaate tab tak use karna hai*/
-    /* background-color: rgba(0, 0, 0, 0.178); */
-}
-
-#heading {
-    background-color: rgba(255, 255, 255, 0.1);
-    position: relative;
-    left: 0%;
-    top: 0;
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
+    color: white;
 }
 
-.inner-chat>.chat-to>.show-message>.both-messages>.message-receive>.all-texts>.come {
-    /* max-width: 80%;
-    min-width: 5%;
-    min-height: 5%;
-    background-color: rgba(255, 255, 255, 0.527);
-    border-radius: 5%;
-    display: inline-block;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    overflow: hidden; */
-    background-color: rgba(255, 255, 255, 0.527);
-    min-width: 5%;
-    min-height: 5%;
-    max-width: 80%;
-    width: fit-content;
-    height: fit-content;
-    margin: 5% 0 0 2%;
-    border-radius: 5%;
-    display: inline-block;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    overflow: hidden;
-}
-
-.inner-chat>.chat-to>.show-message>.both-messages>.message-receive>.all-texts>.come>.icon {
-    width: 100%;
-    display: flex;
-    /* align-items: center; */
-    justify-content: center;
-    font-size: 1.2rem;
-    font-weight: 900;
-}
-
-.inner-chat>.chat-to>.show-message>.both-messages>.message-receive>.all-texts>.come>.text {
-    background-color: rgb(93, 93, 207);
-    width: 100%;
-
-}
-
-/*upto*/
 .inner-chat>.chat-to>.send-messages {
     height: 100%;
     width: 100%;
@@ -460,9 +367,9 @@ ul>li>.profile>img {
     font-weight: 900;
     font-style: normal;
 
-    &:active{
+    &:active {
         outline: none;
-        border-color:blue !important;
+        border-color: blue !important;
     }
 }
 
