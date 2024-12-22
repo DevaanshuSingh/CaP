@@ -40,6 +40,7 @@ body::-webkit-scrollbar {
     scrollbar-width: none;
     scrollbar-color: rgba(0, 0, 255, 0.733);
     -ms-overflow-style: none;
+    border-right: 2px solid rgba(0, 0, 255, 0.527);;
 }
 
 .users::-webkit-scrollbar {
@@ -95,6 +96,17 @@ ul>li {
     border-radius: 5%;
     display: grid;
     grid-template-columns: 7fr 3fr !important;
+    transition: all .5s ease;;
+
+    &:hover{
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    &:active{
+        background-color: rgba(0, 0, 255, 0.8);
+        color: white;
+    }
 }
 
 ul>li>.name {
@@ -108,21 +120,6 @@ ul>li>.name {
     overflow-wrap: break-word;
     overflow-y: hidden;
 }
-
-/* ul>li>.profile {
-    height: 100%;
-    border: 1px solid;
-
-    &>img {
-        height: 100%;
-        width: 100%;
-        width: 100%;
-        height: 100%;
-        max-width: 120%;
-        max-height: 100%;
-        object-fit: cover;
-    } 
-}*/
 
 ul>li>.profile {
     height: 100%;
@@ -164,62 +161,23 @@ ul>li>.profile>img {
     position: relative;
 }
 
-/* .second-person {
-    height: 100%;
-    border: 1px solid red;
-    display: grid;
-    grid-template-columns: 20% 70%;
-    gap: 10%;
-
-    &>.profile-pic {
-        overflow: hidden;
-        border: 1px solid black;
-    }
-
-    &>.profile-name {
-        border: 1px solid black;
-    }
-}
-.profile-pic > img{
-    width: 100%;
-}
-.first-person {
-    height: 100%;
-    border: 1px solid red;
-    display: grid;
-    grid-template-columns: 20% 60%;
-    gap: 20%;
-
-    &>.profile-pic {
-        overflow: hidden;
-        border: 1px solid black;
-    }
-
-    &>.profile-name {
-        border: 1px solid black;
-        display: flex;
-        align-items: center;
-        justify-content: start;
-    }
-} */
 .first-person,
 .second-person {
-    border: 1px solid red; /* Border for visual debugging */
+    border: 1px solid red;
     display: grid;
-    grid-template-columns: 20% auto; /* 20% for image, remaining for text */
-    gap: 10%; /* Space between image and text */
-    align-items: center; /* Center items vertically */
-    /* height: 100; */
+    grid-template-columns: 20% auto;
+    gap: 10%;
+    align-items: center;
+
 }
 
 .profile-name {
-    border: 1px solid black; /* Border for visual debugging */
+    border: 1px solid black;
     display: flex;
-    align-items: center; /* Center text vertically */
-    justify-content: start; /* Align text to the start */
-    overflow: visible; /* Ensure content is visible */
-    word-break: break-word; /* Break long words if needed */
-    padding: 10px;
+    align-items: center;
+    justify-content: start;
+    word-break: ellipsis;
+    height: 100%;
 }
 
 .second-person {
@@ -229,12 +187,12 @@ ul>li>.profile>img {
 
 .first-person>.profile-pic,
 .second-person>.profile-pic {
-    max-width: 100%; /* Ensure the profile picture does not exceed the container */
-    height: 100%; /* Set height to fill the parent container */
-    border: 1px solid black; /* Border for visual debugging */
-    overflow: hidden; /* Hide overflow */
+    max-width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    overflow: hidden;
     display: flex;
-    align-items: center; /* Center image vertically */
+    align-items: center;
     justify-content: center; 
 }
 
@@ -243,8 +201,6 @@ ul>li>.profile>img {
     height: 100%;
     object-fit: cover
 }
-
-
 
 
 
@@ -299,7 +255,7 @@ ul>li>.profile>img {
     overflow-y: auto;
 
     &>#heading {
-        background-color: rgba(85, 69, 69, 0.8);
+        /* background-color: rgba(85, 69, 69, 0.8); */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -313,51 +269,25 @@ ul>li>.profile>img {
     align-items: center;
     justify-content: start;
     gap: 10px;
-    overflow-y: auto;
+    overflow: auto;
     height: 100% !important;
 }
 
 .sections>.all-texts>.go {
-    min-height: 5%;
-    min-width: 5%;
-    height: max-content;
-    width: max-content;
-    outline: 2px solid rgb(0, 0, 0);
+    min-height: auto;
+    min-width: auto;
+    max-width: 90%;
+    height: auto;
+    width: auto;
+    max-height: none;
+    /* border: 1px solid; */
+    padding: 1%;
 }
-
-/* .sections {
-    background-color: rgba(255, 255, 255, 0.2);
-    display: grid;
-    grid-template-rows: 1fr 8fr;
-    gap: 1fr;
-    height: 100%; 
-    overflow-y: auto; 
-}
-
-.sections>.all-texts {
-    border: 1px solid ORANGERED;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-    gap: 10px;
-    overflow-y: auto; 
-    height: 100%; 
-    max-height: 100%; 
-} */
-
-
-
-
-
-
 .sections>.all-texts>.go>.text {
-    background-color: red;
-    height: 100%;
-    width: 100%;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
+    background-color: rgba(0, 0, 255, 0.2);
+    outline:2px solid rgba(0, 0, 255, 0.5);
+    height: auto;
+    width: auto;
     color: white;
 }
 
@@ -417,4 +347,27 @@ ul>li>.profile>img {
 
 [class*=" ri-"] {
     font-size: xx-large;
+}
+.design{
+    height: 100%;
+    width: 80%;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    left:20%;
+    transition: all 2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &>.cnat{
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 255, 0.397);
+
+        &>img{
+            height: 100%;
+            width: 100%;
+            object-fit:contain;
+        }
+    }
 }
