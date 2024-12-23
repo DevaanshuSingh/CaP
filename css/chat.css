@@ -19,8 +19,8 @@
 }
 
 body {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     overflow: hidden;
     display: grid;
     grid-template-columns: 2fr 8fr;
@@ -34,13 +34,13 @@ body::-webkit-scrollbar {
 .users {
     display: grid;
     height: 100vh;
-    background-color: rgba(128, 0, 128, 0.445);
+    /* background-color: rgba(128, 0, 128, 0.445); */
+    background-color: rgba(0, 0, 255, 0.527);
     grid-template-rows: 1fr 9fr;
     overflow: scroll;
     scrollbar-width: none;
     scrollbar-color: rgba(0, 0, 255, 0.733);
     -ms-overflow-style: none;
-    border-right: 2px solid rgba(0, 0, 255, 0.527);;
 }
 
 .users::-webkit-scrollbar {
@@ -56,14 +56,14 @@ body::-webkit-scrollbar {
     border-radius: 10%;
 }
 
-.heading {
+.choose {
     width: 100%;
-    /* border: 1px solid; */
     display: flex;
-    /* align-items: center; */
     justify-content: center;
     font-size: 2rem;
     font-family: 'Arial Narrow', Arial, sans-serif;
+    background-color: rgba(250, 235, 215, 0.521);
+    border-right: 2px solid rgba(0, 0, 0, 0.527);
 }
 
 .list {
@@ -74,6 +74,9 @@ body::-webkit-scrollbar {
         list-style-type: none;
         padding: 0;
         margin: 0;
+        color: rgb(228, 207, 89);
+        border-right: 2px solid rgba(0, 0, 255, 0.527);
+
     }
 }
 
@@ -82,6 +85,11 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 1vmin;
+}
+
+ul::-moz-selection {
+    background-color: black !important;
+    color: white !important;
 }
 
 ul>li {
@@ -96,14 +104,16 @@ ul>li {
     border-radius: 5%;
     display: grid;
     grid-template-columns: 7fr 3fr !important;
-    transition: all .5s ease;;
+    transition: all .5s ease;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
-    &:hover{
+    &:hover {
         cursor: pointer;
         background-color: rgba(0, 0, 0, 0.5);
     }
 
-    &:active{
+    &:active {
         background-color: rgba(0, 0, 255, 0.8);
         color: white;
     }
@@ -155,10 +165,26 @@ ul>li>.profile>img {
 .know-about {
     width: 100%;
     display: grid;
-    grid-template-columns: 49% 49%;
-    gap: 2%;
+    grid-template-columns: 47.5% 47.5%;
+    gap: 5%;
+    /* gap: 2%; */
     height: auto;
     position: relative;
+}
+
+.close-chat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid black; */
+    background-color: rgba(255, 0, 0, 0.541);
+    border-radius: 50%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(255, 0, 0, 0.1);
+        color: red;
+    }
 }
 
 .first-person,
@@ -172,13 +198,21 @@ ul>li>.profile>img {
 }
 
 .profile-name {
-    border: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: start;
-    word-break: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
     height: 100%;
+    border: 1px solid black;
+
+    font-family: "Kanit", serif;
+    font-weight: 900;
+    font-style: normal;
 }
+
 
 .second-person {
     grid-template-columns: 20% 70%;
@@ -189,11 +223,11 @@ ul>li>.profile>img {
 .second-person>.profile-pic {
     max-width: 100%;
     height: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .profile-pic>img {
@@ -237,8 +271,7 @@ ul>li>.profile>img {
 .inner-chat>.chat-to>.show-message>.both-messages {
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 128, 0, 0.616);
-    /* border: 1px solid yellowgreen; */
+    background-color: rgb(0 46 255 / 62%);
     display: grid;
     grid-template-columns: 5fr 5fr;
     gap: 2%;
@@ -254,12 +287,26 @@ ul>li>.profile>img {
     max-height: 80vh;
     overflow-y: auto;
 
-    &>#heading {
-        /* background-color: rgba(85, 69, 69, 0.8); */
+    &>.heading {
+        background-color: rgba(0, 0, 0, 0.603);
+        color: aliceblue;
         display: flex;
         align-items: center;
         justify-content: center;
     }
+}
+
+.all-texts::-webkit-scrollbar {
+    width: 2vmin;
+}
+
+.all-texts::-webkit-scrollbar-track {
+    background-color: rgb(107, 129, 202);
+}
+
+.all-texts::-webkit-scrollbar {
+    background-color: blue;
+    width: 100%;
 }
 
 .sections>.all-texts {
@@ -283,9 +330,10 @@ ul>li>.profile>img {
     /* border: 1px solid; */
     padding: 1%;
 }
+
 .sections>.all-texts>.go>.text {
     background-color: rgba(0, 0, 255, 0.2);
-    outline:2px solid rgba(0, 0, 255, 0.5);
+    outline: 2px solid rgba(0, 0, 255, 0.5);
     height: auto;
     width: auto;
     color: white;
@@ -297,13 +345,13 @@ ul>li>.profile>img {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border: 1px solid rgb(0, 255, 0); */
+    background-color: rgba(0, 0, 0, 0.363);
 }
 
 .inner-chat>.chat-to>.send-messages>.text-section {
     height: 99%;
     width: 100%;
-    background-color: rgb(101, 70, 148);
+    background-color: rgb(0 46 255 / 62%);
     display: grid;
     grid-template-columns: 9.5fr .5fr;
     /* border-radius: 2%; */
@@ -315,8 +363,7 @@ ul>li>.profile>img {
     /* border: 1px solid black !important; */
     height: 100%;
     /* width: 90%; */
-    background-color: rgb(255 255 255 / 46%);
-    /* position: relative; */
+    background-color: rgba(237, 237, 238, 0);
     /* left:2%; */
     border: none;
     font-size: 1.5rem;
@@ -329,45 +376,60 @@ ul>li>.profile>img {
         outline: none;
         border-color: blue !important;
     }
+    
+    &::placeholder {
+        color: rgba(0, 0, 0, 0.37);
+        font-style: italic;
+        font-size: 2rem;
+    }
 }
 
 .inner-chat>.chat-to>.send-messages>.text-section>.send-image {
     border-radius: 20%;
-    /* border: 1px solid black; */
-    /* border-left: 1px solid black; */
     font-size: 5rem;
-    background-color: rgb(255 255 255 / 46%);
-
+    background-color: rgba(255, 255, 255, 0);
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgb(0, 26, 255);
 }
 
-[class*=" ri-"] {
+.icon {
     font-size: xx-large;
+    color: rgb(21, 255, 0);
 }
-.design{
+
+.send-icon {
+    font-size: xx-large;
+    color: black;
+
+    &:active {
+        color: blue;
+        border: red;
+        /*Now Working*/
+    }
+}
+
+.design {
     height: 100%;
     width: 80%;
     background-color: rgb(255, 255, 255);
     position: absolute;
-    left:20%;
+    left: 20%;
     transition: all 2s ease;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    &>.cnat{
+    &>.cnat {
         height: 100%;
         width: 100%;
         background-color: rgba(0, 0, 255, 0.397);
 
-        &>img{
+        &>img {
             height: 100%;
             width: 100%;
-            object-fit:contain;
+            object-fit: contain;
         }
     }
 }

@@ -2,36 +2,27 @@
 For Hide The Actual Source Code -->
 
 <?php
+session_start();
+
 require_once 'config.php';
 if (isset($_GET['checkName'], $_GET['checkPassword'])) {
-    // echo "<script>
-    // alert('Starting Checking');
-    // </script>";
-
     $userName = $_GET['checkName'];
     $userPassword = $_GET['checkPassword'];
-    // echo "<script>
-    // alert('Got_Name: $userName, Got_Pass: $userPassword');
-    // </script>";
 
     try {
-        // echo "<script>
-        // alert('Inside Try Block');
-        // </script>";
 
         $stmt = $pdo->prepare(query: "SELECT * FROM users WHERE name=? AND userPassword=?;");
         $stmt->execute([$userName, $userPassword]);
         $existUser = $stmt->fetchAll();
 
         if (!empty($existUser)) {
-            echo "<script>
-                        // alert(`User Have Registered (LINE: 19)`);
-                    </script>";
-
             $stmt = $pdo->prepare(query: "SELECT * FROM users;");
             $stmt->execute();
             $users = $stmt->fetchAll();
-
+            // foreach($existUser as $user) {
+            // print_r($existUser);
+            // echo "<script>alert(`Regesterd As:\n".$existUser[0]['id']."->".$existUser[0]['name'] ." `)</script>";
+            // }
             ?>
             <!doctype html>
             <html lang="en">
@@ -52,16 +43,16 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
 
             <body>
                 <div class="users">
-                    <div class="heading">CHOOSE TO CHAT</div>
+                    <div class="choose"><u>CHOOSE TO CHAT</u></div>
                     <div class="list">
-                        <ul>
+                        <ul id="userList">
                             <?php
                             if (!empty($users)) {
                                 foreach ($users as $user) {
-                                    echo "<li>
-                                                    <div class='name'>" . $user['name'] . "</div>
-                                                    <div class='profile'><img src='" . $user['profile'] . "' alt=''></div>
-                                                </li>";
+                                    echo "<li onclick='secondPersonData(" . $user['name'], $user['profile'] . ")' data-id='" . $user['id'] . "'  data-name='" . $user['name'] . "' data-profile='" . $user['profile'] . "' >
+                                            <div class='name'>" . $user['name'] . "</div>
+                                            <div class='profile'><img src='" . $user['profile'] . "' alt=''></div>
+                                        </li>";
                                     if ($user['name'] == $userName) {
                                         $myName = $user['name'];
                                         $myProfile = $user['profile'];
@@ -76,29 +67,22 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                 </div>
 
                 <div class="chat-section">
+
                     <div class="know-about">
                         <div class="second-person">
                             <div class="profile-pic">
-                                <img src="<?php
-                                // echo $user['profile']
-                                ?>" class="img-fluid" alt="<?php
-                                echo $user['name']
-                                    ?>">
+                                <img src="" class="img-fluid" alt="">
                             </div>
-                            <div class="profile-name"><?php
-                            echo $user['name']
-                                ?></div>
+                            <div class="profile-name"><?php // echo $user['name'] ?></div>
                         </div>
 
-                        <div class="first-person">
+                        <!-- <div class="close-chat">X</button></div> -->
+
+                        <div class="first-person " data-my-id='<?php echo $existUser[0]['id'] ?>'>
                             <div class="profile-pic">
-                                <img src="<?php
-                                // echo $myProfile
-                                ?>" class="img-fluid" alt="<?php
-                                echo $user['name']
-                                    ?>">
+                                <img src="<?php // echo $myProfile ?>" class="img-fluid" alt="Your Name">
                             </div>
-                            <div class="profile-name"><?php echo $myName ?></div>
+                            <div class="profile-name"><?php echo $userName ?></div>
                         </div>
                     </div>
 
@@ -107,44 +91,62 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                             <div class="show-message">
                                 <div class="both-messages">
 
-
                                     <div class="sections message-receive">
-                                        <h6 id="heading"><u>RECEIVED MESSAGES</u> <i class="ri-corner-right-up-fill"></i></h6>
-                                        <div class="all-texts">
-                                            <div class="go">
-                                                <div class="text">
-                                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo, dolor atque doloribus ratione fuga ex illum rerum! Sunt modi facere laborum vel unde alias soluta expedita voluptatibus rem est odio ea atque animi eligendi voluptatum magni non nihil eum, doloribus distinctio quam molestias similique. A distinctio reprehenderit, aliquam totam expedita magnam, voluptates quis ratione suscipit doloremque beatae iure libero accusantium quas rem illum exercitationem minima at sapiente neque quae id eum error. Obcaecati dicta unde perspiciatis eius vel, tempora esse quasi ipsum libero eum ea, error incidunt magnam? Accusamus deserunt cumque ratione libero eligendi. Minima, incidunt impedit. Recusandae, quod, ea sapiente iste ipsum possimus quam ut modi id perferendis corporis odio similique reprehenderit sunt laboriosam eveniet, ratione maxime illum minus alias quasi eligendi quas quisquam asperiores. Tenetur veritatis quibusdam iure blanditiis nesciunt nemo nostrum asperiores laborum cumque itaque hic qui et, labore in cupiditate doloremque! Sunt et vitae, doloremque, impedit commodi totam perspiciatis minima numquam mollitia corporis laborum consectetur iste in placeat, sint vel repellat sit expedita. Earum nisi fuga consectetur error culpa eum suscipit excepturi adipisci sint veritatis aut eaque est et nemo voluptates porro, quibusdam ex illum nostrum veniam inventore accusantium eveniet magni? Blanditiis perspiciatis corrupti, deserunt nostrum quas, consectetur nesciunt qui rerum facere fugit possimus. Repellendus, et possimus inventore minima tempora ea saepe. Libero ratione quos accusamus sapiente dignissimos at voluptas iste. Unde alias nisi quidem obcaecati repellendus eaque minima magni voluptatem totam quia maiores necessitatibus debitis, reiciendis placeat error iure quaerat facilis fugiat labore delectus dignissimos, fugit eius! Animi sunt accusamus corrupti, hic est nihil debitis itaque nulla temporibus maiores cum sequi esse quidem atque vitae, vel similique, deserunt recusandae laborum laudantium saepe. Sit aliquid sequi excepturi asperiores id possimus ab sed, enim vel. Quis vel, illum eveniet, fuga aperiam quidem aliquid nam velit ducimus earum rerum. Iusto voluptatum deserunt laborum adipisci reprehenderit perspiciatis dolorum eius magnam sit et exercitationem, sunt dicta deleniti at saepe laudantium eveniet soluta aliquid veritatis voluptas quis, libero, nemo nobis? Porro, aliquid quae quod quia eaque magnam placeat numquam iusto excepturi, similique et non sapiente assumenda voluptatem aspernatur cum omnis velit at repudiandae vitae quo eos a, corrupti quaerat! Voluptas, ipsa. Id, quo aperiam! Perferendis aliquid, voluptatibus error quam vitae tempore quibusdam sunt suscipit neque culpa natus autem eius cumque aspernatur? Ab corrupti ipsa, natus exercitationem laborum illum error magni possimus aut quasi odit id commodi consectetur reprehenderit accusantium praesentium? Perspiciatis dolores ad quasi omnis? Cumque nisi inventore eligendi pariatur sed dolor fuga, eos deleniti cum ipsam, laboriosam nobis aliquid facere nesciunt. Eaque tenetur adipisci dolor consectetur praesentium ut doloribus consequatur id, culpa nobis recusandae accusamus error porro corrupti temporibus quasi fugiat cupiditate optio dolorum. Cupiditate vero veritatis sit quaerat atque ratione eveniet voluptate eaque et obcaecati? Voluptates, voluptate! Soluta illum veniam error numquam expedita explicabo assumenda sit iure, iste maiores repudiandae cumque velit fugit molestias nulla voluptatem! Expedita maiores aliquid dolore quis voluptas, natus dolorem laboriosam aut nam omnis incidunt sed non perferendis reprehenderit deleniti beatae consequatur suscipit. Distinctio, culpa?
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <h6 class="heading"><u>RECEIVED MESSAGES</u> <i class="icon ri-corner-right-up-fill"></i>
+                                        </h6>
+                                        <div class="all-texts"></div>
                                     </div>
 
                                     <div class=" sections message-sent">
-                                        <h6 id="heading"><u>SENT MESSAGES</u> <i class=" icon ri-corner-right-down-fill"></i>
-                                        </h6>
-
+                                        <h6 class="heading"><u>SENT MESSAGES</u> <i class="icon ri-corner-right-down-fill"></i></h6>
                                         <div class="all-texts">
-                                            <div class="go">
+                                            <!-- <div class="go">
                                                 <div class="text">
-                                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo, dolor atque doloribus ratione fuga ex illum rerum! Sunt modi facere laborum vel unde alias soluta expedita voluptatibus rem est odio ea atque animi eligendi voluptatum magni non nihil eum, doloribus distinctio quam molestias similique. A distinctio reprehenderit, aliquam totam expedita magnam, voluptates quis ratione suscipit doloremque beatae iure libero accusantium quas rem illum exercitationem minima at sapiente neque quae id eum error. Obcaecati dicta unde perspiciatis eius vel, tempora esse quasi ipsum libero eum ea, error incidunt magnam? Accusamus deserunt cumque ratione libero eligendi. Minima, incidunt impedit. Recusandae, quod, ea sapiente iste ipsum possimus quam ut modi id perferendis corporis odio similique reprehenderit sunt laboriosam eveniet, ratione maxime illum minus alias quasi eligendi quas quisquam asperiores. Tenetur veritatis quibusdam iure blanditiis nesciunt nemo nostrum asperiores laborum cumque itaque hic qui et, labore in cupiditate doloremque! Sunt et vitae, doloremque, impedit commodi totam perspiciatis minima numquam mollitia corporis laborum consectetur iste in placeat, sint vel repellat sit expedita. Earum nisi fuga consectetur error culpa eum suscipit excepturi adipisci sint veritatis aut eaque est et nemo voluptates porro, quibusdam ex illum nostrum veniam inventore accusantium eveniet magni? Blanditiis perspiciatis corrupti, deserunt nostrum quas, consectetur nesciunt qui rerum facere fugit possimus. Repellendus, et possimus inventore minima tempora ea saepe. Libero ratione quos accusamus sapiente dignissimos at voluptas iste. Unde alias nisi quidem obcaecati repellendus eaque minima magni voluptatem totam quia maiores necessitatibus debitis, reiciendis placeat error iure quaerat facilis fugiat labore delectus dignissimos, fugit eius! Animi sunt accusamus corrupti, hic est nihil debitis itaque nulla temporibus maiores cum sequi esse quidem atque vitae, vel similique, deserunt recusandae laborum laudantium saepe. Sit aliquid sequi excepturi asperiores id possimus ab sed, enim vel. Quis vel, illum eveniet, fuga aperiam quidem aliquid nam velit ducimus earum rerum. Iusto voluptatum deserunt laborum adipisci reprehenderit perspiciatis dolorum eius magnam sit et exercitationem, sunt dicta deleniti at saepe laudantium eveniet soluta aliquid veritatis voluptas quis, libero, nemo nobis? Porro, aliquid quae quod quia eaque magnam placeat numquam iusto excepturi, similique et non sapiente assumenda voluptatem aspernatur cum omnis velit at repudiandae vitae quo eos a, corrupti quaerat! Voluptas, ipsa. Id, quo aperiam! Perferendis aliquid, voluptatibus error quam vitae tempore quibusdam sunt suscipit neque culpa natus autem eius cumque aspernatur? Ab corrupti ipsa, natus exercitationem laborum illum error magni possimus aut quasi odit id commodi consectetur reprehenderit accusantium praesentium? Perspiciatis dolores ad quasi omnis? Cumque nisi inventore eligendi pariatur sed dolor fuga, eos deleniti cum ipsam, laboriosam nobis aliquid facere nesciunt. Eaque tenetur adipisci dolor consectetur praesentium ut doloribus consequatur id, culpa nobis recusandae accusamus error porro corrupti temporibus quasi fugiat cupiditate optio dolorum. Cupiditate vero veritatis sit quaerat atque ratione eveniet voluptate eaque et obcaecati? Voluptates, voluptate! Soluta illum veniam error numquam expedita explicabo assumenda sit iure, iste maiores repudiandae cumque velit fugit molestias nulla voluptatem! Expedita maiores aliquid dolore quis voluptas, natus dolorem laboriosam aut nam omnis incidunt sed non perferendis reprehenderit deleniti beatae consequatur suscipit. Distinctio, culpa?
+                                                    GRK
                                                 </div>
-                                            </div>
-
+                                            </div> -->
+                                            <form id="form" action="" method="post">
+                                                <input type="hidden" name="toSendIdHidden" id="hiddenId">
+                                            </form>
+                                            <?php
+                                            $toSendId = $_SESSION['sendToId'];
+                                            $stmt = $pdo->prepare("SELECT message FROM send_messages WHERE fromUserId = ? AND toUserId= ? ;");
+                                            $stmt->execute([$existUser[0]['id'], $toSendId]);//here This toSendId Is A JS Variable How To Get THat's Value In PHP
+                                            $messages = $stmt->fetchAll();
+                                            if (!empty($messages)) {
+                                                foreach ($messages as $message) {
+                                                    echo "<div class='go'>
+                                                        <div class='text'>
+                                                            " . $message['message'] . "
+                                                        </div>
+                                                    </div>";
+                                                }
+                                            }
+                                            // else {
+                                            // echo "<div class='go'>
+                                            //     <div class='text'>
+                                            //         No Messages
+                                            //     </div>
+                                            // </div>";
+                                            // }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="send-messages">
-                                <div class="text-section"><input class="message" type="text" name="message">
+                                <div class="text-section"><input class="message message-input" type="text" name="message"
+                                        placeholder="Type Message">
                                     <div class="send-image">
-                                        <div class="btn"><i class=" icon ri-upload-2-fill"></i></div>
+                                        <div onclick="sendMessage()" class="btn"><i class=" send-icon ri-upload-2-fill"></i></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="design">
                     <div class="cnat"><img src="codernaccotax.png" alt="CNAT"></div>
                 </div>
@@ -154,15 +156,95 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                     crossorigin="anonymous"></script>
 
                 <script>
+                    let getMyId = document.querySelector('.first-person');
+                    let myId = getMyId.getAttribute('data-my-id');
+                    let toSendId;
                     let design = document.querySelector('.design');
-                    design.addEventListener(
-                        "click", () => {
+
+                    function secondPersonData(id, name, profile) { }
+                    let userList = document.querySelectorAll('#userList > li');
+
+                    userList.forEach(user => {
+                        user.addEventListener('click', () => {
+
                             design.style.transition = 'all 2s ease';
                             // design.style.display = 'none';
                             design.style.height = '0%';
                             design.style.backgroundColor = 'rgba(218, 209, 209, 0)';
+
+                            let name = user.getAttribute('data-name');
+                            let profile = user.getAttribute('data-profile');
+                            let replaceSecondPersonName = document.querySelector('.second-person .profile-name');
+                            let replaceSecondPersonProfile = document.querySelector('.second-person .profile-pic img');
+
+                            toSendId = user.getAttribute('data-id');
+                            // $_SESSION['sendToId'] = toSendId;///////////////////////////
+
+                            toSendId = user.getAttribute('data-id');
+                            fetch('updateSession.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded'
+                                },
+                                body: 'sendToId=' + encodeURIComponent(toSendId)
+                            })
+                                .then(response => response.text())
+                                .then(data => {
+                                    console.log('Session updated on server:', data);
+                                })
+                                .catch(error => {
+                                    console.error('Error updating session:', error);
+                                });
+
+
+
+
+                            replaceSecondPersonName.textContent = name;
+                            if (replaceSecondPersonProfile) {
+                                // replaceSecondPersonProfile.src = profile;//Wait Upto Fixing
+                                replaceSecondPersonProfile.alt = name;
+                            } else {
+                                alert('Image element not found.');
+                            }
+                            // alert(`Name: ${name}\nProfile: ${profile}`);
+                        });
+                    });
+
+                    function sendMessage() {
+                        // let from = document.querySelector('.first-person .profile-name').textContent.trim();
+                        alert("CLICKED");
+                        let from = myId;
+                        let to = toSendId;
+                        let message = document.querySelector('.message-input').value.trim();
+                        if (from && to && message) {
+                            alert(`From: ${from}\nTo: ${to}\nMessage: ${message}`);
+                            const xhr = new XMLHttpRequest();
+                            xhr.open('POST', 'sendMessage.php', true);
+                            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                            xhr.onload = () => {
+                                if (xhr.status === 200) {
+                                    alert(`Message Sent: ${xhr.responseText}`);
+                                    // window.location.href = 'sendMessage.php';
+                                    document.querySelector('.message-input').value = "";
+                                } else {
+                                    alert('Error Occurred');
+                                }
+                            };
+                            xhr.onerror = () => {
+                                alert("Request Failed");
+                            };
+                            xhr.send(
+                                "from=" + encodeURIComponent(from) +
+                                "&to=" + encodeURIComponent(to) +
+                                "&message=" + encodeURIComponent(message)
+                            );
+                        } else {
+                            if (!from) alert('From is Empty');
+                            if (!to) alert('To is Empty');
+                            if (!message) alert('Message is Empty');
                         }
-                    );
+                    }
+
                 </script>
 
             </body>
@@ -173,7 +255,7 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
 
         } else {
             echo "<script>
-            alert(`Please Register First To Use The ChatApp; \nNot Enough Users, (OUTER)`);
+            alert(`Please Register First To Use The ChatApp; \n`);
             window.location.href = 'index.php';
             </script>";
         }
