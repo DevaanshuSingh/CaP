@@ -94,42 +94,41 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                                     <div class="sections message-receive">
                                         <h6 class="heading"><u>RECEIVED MESSAGES</u> <i class="icon ri-corner-right-up-fill"></i>
                                         </h6>
-                                        <div class="all-texts"></div>
+                                        <div class="all-texts">
+
+                                        </div>
                                     </div>
 
                                     <div class=" sections message-sent">
                                         <h6 class="heading"><u>SENT MESSAGES</u> <i class="icon ri-corner-right-down-fill"></i></h6>
                                         <div class="all-texts">
-                                            <!-- <div class="go">
-                                                <div class="text">
-                                                    GRK
-                                                </div>
-                                            </div> -->
-                                            <form id="form" action="" method="post">
-                                                <input type="hidden" name="toSendIdHidden" id="hiddenId">
-                                            </form>
                                             <?php
-                                            $toSendId = $_SESSION['sendToId'];
-                                            $stmt = $pdo->prepare("SELECT message FROM send_messages WHERE fromUserId = ? AND toUserId= ? ;");
-                                            $stmt->execute([$existUser[0]['id'], $toSendId]);//here This toSendId Is A JS Variable How To Get THat's Value In PHP
-                                            $messages = $stmt->fetchAll();
-                                            if (!empty($messages)) {
-                                                foreach ($messages as $message) {
-                                                    echo "<div class='go'>
+                                            if (isset($_POST['sendFromAjax'])) {
+                                                $toSendId = $_POST['sendFromAjax'];
+                                                echo "<script>alert(`toSendId: " . $toSendId . "`);</script>";
+                                                $stmt = $pdo->prepare("SELECT message FROM send_messages WHERE fromUserId = ? AND toUserId= ?;");
+                                                $stmt->execute([$existUser[0]['id'], $toSendId]);//here This toSendId Is A JS Variable How To Get THat's Value In PHP
+                                                $messages = $stmt->fetchAll();
+                                                if (!empty($messages)) {
+                                                    foreach ($messages as $message) {
+                                                        echo "<div class='go'>
                                                         <div class='text'>
                                                             " . $message['message'] . "
                                                         </div>
                                                     </div>";
+                                                    }
+                                                } else {
+                                                    echo "<div class='go'>
+                                                <div class='text'>
+                                                    SELECT message FROM send_messages WHERE fromUserId = " . $existUser[0]['id'] . " AND toUserId= " . $toSendId . ";
+                                                </div>
+                                            </div>";
                                                 }
+                                            } else {
+                                                echo "<script>alert(`Not Set`);</script>";
                                             }
-                                            // else {
-                                            // echo "<div class='go'>
-                                            //     <div class='text'>
-                                            //         No Messages
-                                            //     </div>
-                                            // </div>";
-                                            // }
                                             ?>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -156,6 +155,13 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                     crossorigin="anonymous"></script>
 
                 <script>
+                    window.onload = () => {
+                        alert('Loaded');
+                    };
+                    // alert(`Befor #hiddenId's value: ${document.querySelector('#hiddenId').value}`);
+                    // let check = document.querySelector('#hiddenId').value;
+                    // alert(`Before: ${check}`);
+
                     let getMyId = document.querySelector('.first-person');
                     let myId = getMyId.getAttribute('data-my-id');
                     let toSendId;
@@ -166,53 +172,79 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
 
                     userList.forEach(user => {
                         user.addEventListener('click', () => {
-
                             design.style.transition = 'all 2s ease';
-                            // design.style.display = 'none';
                             design.style.height = '0%';
                             design.style.backgroundColor = 'rgba(218, 209, 209, 0)';
 
                             let name = user.getAttribute('data-name');
                             let profile = user.getAttribute('data-profile');
+                            toSendId = user.getAttribute('data-id');
+
                             let replaceSecondPersonName = document.querySelector('.second-person .profile-name');
                             let replaceSecondPersonProfile = document.querySelector('.second-person .profile-pic img');
-
-                            toSendId = user.getAttribute('data-id');
-                            // $_SESSION['sendToId'] = toSendId;///////////////////////////
-
-                            toSendId = user.getAttribute('data-id');
-                            fetch('updateSession.php', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/x-www-form-urlencoded'
-                                },
-                                body: 'sendToId=' + encodeURIComponent(toSendId)
-                            })
-                                .then(response => response.text())
-                                .then(data => {
-                                    console.log('Session updated on server:', data);
-                                })
-                                .catch(error => {
-                                    console.error('Error updating session:', error);
-                                });
-
-
-
-
                             replaceSecondPersonName.textContent = name;
+
                             if (replaceSecondPersonProfile) {
-                                // replaceSecondPersonProfile.src = profile;//Wait Upto Fixing
+                                // replaceSecondPersonProfile.src = profile;
                                 replaceSecondPersonProfile.alt = name;
                             } else {
                                 alert('Image element not found.');
                             }
-                            // alert(`Name: ${name}\nProfile: ${profile}`);
+                            alert(`Calling AJAX(${toSendId})`);
+                            callAJAX(toSendId);
+                            alert(`After Inputing Value: ${document.querySelector('#hiddenId').value}`);
+
                         });
                     });
+                    // function callAJAX(toSendId) {
+                    //     alert(`callAJAX: ${toSendId}`);
+                    //     const xhr = new XMLHttpRequest();
+                    //     xhr.open('POST', 'chat.php', true);
+                    //     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    //     xhr.onprogress = function () {
+                    //         alert("AJAX Loading");
+                    //     };
+                    //     xhr.onload = function () {
+                    //         if (xhr.status === 200) {
+                    //             // document.querySelector('.all-texts').innerHTML = xhr.responseText;
+                    //             alert(`AJAX Sent ${toSendI}  And Response: ${xhr.responseText}`);
+                    //         } else {
+                    //             alert('Error: ' + xhr.status);
+                    //         }
+                    //     };
+                    //     xhr.onerror = function () {
+                    //         alert("AJAX Request Failed");
+                    //     };
+                    //     alert(`Before AJAX Sending: ${toSendId}`);
+                    //     xhr.send('sendFromAjax=' + toSendId);
+                    //     alert(`After AJAX Sending: ${toSendId}`);
+                    // }
+                    function callAJAX(toSendId) {
+                        const xhr = new XMLHttpRequest();
+                        xhr.open('POST', 'chat.php', true);  // The same PHP file
+                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+                        xhr.onload = function () {
+                            if (xhr.status === 200) {
+                                // document.querySelector('.all-texts').innerHTML = xhr.responseText;
+                                alert(`AJAX Sent ${toSendI}  And Response: ${xhr.responseText}`);
+                            } else {
+                                alert('Error: ' + xhr.status);
+                            }
+                        };
+
+                        xhr.onerror = function () {
+                            alert("AJAX Request Failed");
+                        };
+
+                        alert(`Before AJAX Sending: ${toSendId}`);
+                        xhr.send('sendFromAjax=' + encodeURIComponent(toSendId));
+                        alert(`After AJAX Sending: ${toSendId}`);
+                    }
+
 
                     function sendMessage() {
-                        // let from = document.querySelector('.first-person .profile-name').textContent.trim();
-                        alert("CLICKED");
+                        // alert("CLICKED");
                         let from = myId;
                         let to = toSendId;
                         let message = document.querySelector('.message-input').value.trim();
@@ -263,6 +295,9 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
         echo 'Error While Fetching Infos: ' . $e->getMessage();
     }
 } else {
-    echo '<script>alert(`Please Fullfill The Requirments First`);</script>';
+    echo "<script>
+            alert(`Please Fullfill The Requirments First`);
+            window.location.href = 'index.php';
+        </script>";
 }
 ?>
