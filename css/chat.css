@@ -189,7 +189,8 @@ ul>li>.profile>img {
 
 .first-person,
 .second-person {
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    background-color: rgb(59 107 235 / 59%);
     display: grid;
     grid-template-columns: 20% auto;
     gap: 10%;
@@ -206,7 +207,12 @@ ul>li>.profile>img {
     white-space: nowrap;
     width: 100%;
     height: 100%;
-    border: 1px solid black;
+    border-left: 1px solid #0017ff;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    /* background-color: rgba(0, 68, 255, 0.486); */
+    background-color: rgb(59 107 235 / 28%);
+
 
     font-family: "Kanit", serif;
     font-weight: 900;
@@ -223,7 +229,7 @@ ul>li>.profile>img {
 .second-person>.profile-pic {
     max-width: 100%;
     height: 100%;
-    /* border: 1px solid black; */
+    /* border-right: 1px solid black; */
     overflow: hidden;
     display: flex;
     align-items: center;

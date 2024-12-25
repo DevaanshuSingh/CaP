@@ -25,7 +25,7 @@
             <div class="content">
                 <i>Here You Can <span class="highlight"><strong>Chat</strong></span> Live With Another Person Currently
                     Available In Server,<br>Have Tried to Make This Software User Friendly That's Why
-                    <br><strong>Here</strong> You Are Able to See The Profile Picture Of know-about And The Person You Are
+                    <br><strong>Here</strong> You Are Able to See The Profile Picture To know-about And The Person You Are
                     Chhating With,</i>
             </div>
         </div>
