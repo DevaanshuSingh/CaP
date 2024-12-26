@@ -17,3 +17,7 @@ CREATE TABLE `send_messages` (
   `message` text DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE `notifificationtable` (
+  `newMessage` tinyint(1) DEFAULT 0
+);

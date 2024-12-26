@@ -158,7 +158,7 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
 
                             <div class="send-messages">
                                 <div class="text-section"><input class="message message-input" type="text" name="message"
-                                        placeholder="<?php echo "$myName Please Write Here"; ?>"></div>
+                                        placeholder="<?php echo "Welcome: $myName,"; ?>"></div>
                                 <div class="send-image">
                                     <div onclick="sendMessage()" class="btn"><i class=" send-icon ri-upload-2-fill"></i></div>
                                 </div>
@@ -172,22 +172,31 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                     <div class="cnat"><img src="codernaccotax.png" alt="CNAT"></div>
                 </div>
 
-                <?php
-                //Trying To Display Messages Automatically When New Messages Are Being Sent,
-                // require 'config.php';
-                // $stmt = $pdo->prepare(query: "SELECT newMessage FROM notificationTable;");
-                // $stmt->execute();
-                // $isNewMessage = $stmt->fetch();
-                // if($isNewMessage)
-                //     // echo "<script>sentMessages(myId, toSendId);receivedMessages(myId, toSendId); clearNotificationTable()</script>"
-                //     echo "<script>alert('GRK');</script>";
-                ?>
-
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
                     crossorigin="anonymous"></script>
 
                 <script>
+
+                    setInterval(() => {
+                        const xhrCheck = new XMLHttpRequest();
+                        xhrCheck.open('POST', 'checkMessages.php', true);
+                        xhrCheck.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                        xhrCheck.onload = function () {
+                            if (xhrCheck.status === 200) {
+                                // alert("responseText: " + xhrCheck.responseText);
+                                // document.querySelector('.message-sent .all-texts').innerHTML = xhrCheck.responseText;
+                                if(xhrCheck!=0){
+                                    sentMessages(myId, toSendId);
+                                    receivedMessages(myId, toSendId)
+                                }
+                            } else {
+                                alert(`Error in sm.php: ${xhrCheck.status}`);
+                            }
+                        };
+                        xhrCheck.send();
+                    }, 1000);
+
                     let getMyId = document.querySelector('.first-person');
                     let myId = getMyId.getAttribute('data-my-id');
                     let toSendId;
@@ -217,9 +226,11 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
 
                             sentMessages(myId, toSendId);
                             receivedMessages(myId, toSendId);
+                            // alert(`Done`);
                         });
                     });
 
+                    // This Function Shows Sent-Messages(Messages Sent By You To Choosed_Person);
                     function sentMessages(myId, toSendId) {
                         // alert("Sent Messages");
                         // Send data to sm.php
@@ -236,6 +247,8 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                         };
                         xhrSm.send("choosedId=" + encodeURIComponent(toSendId) + "&myId=" + encodeURIComponent(myId));
                     }
+
+                    // This Function Shows Received-Messages(Messages Received By You From Choosed_Person);
                     function receivedMessages(myId, toSendId) {
                         // alert("Received Messages");
                         // Send data to rm.php
@@ -254,19 +267,20 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                     }
 
                     function sendMessage() {
-                        // alert("CLICKED");
+                        // console.log("Sending");
                         let from = myId;
                         let to = toSendId;
                         let message = document.querySelector('.message-input').value.trim();
                         if (from && to && message) {
-                            alert(`From: ${from}\nTo: ${to}\nMessage: ${message}`);
+                            // alert(`From: ${from}\nTo: ${to}\nMessage: ${message}`);
                             const xhr = new XMLHttpRequest();
                             xhr.open('POST', 'sendMessage.php', true);
                             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                             xhr.onload = () => {
                                 if (xhr.status === 200) {
-                                    alert(`Message Sent: ${xhr.responseText}`);
-                                    // window.location.href = 'sendMessage.php';
+                                    sentMessages(myId, toSendId);
+                                    receivedMessages(myId, toSendId);
+                                    // alert(`Message Sent: ${xhr.responseText}`);
                                     document.querySelector('.message-input').value = "";
                                 } else {
                                     alert('Error Occurred');
@@ -285,7 +299,11 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                             if (!to) alert('To is Empty');
                             if (!message) alert('Message is Empty');
                         }
+                        // console.log("Sent");
+                        // location.reload();
                         updateNotificationTable();
+                        sentMessages(myId, toSendId);
+                        receivedMessages(myId, toSendId);
                     }
 
                     function updateNotificationTable() {
@@ -293,7 +311,7 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                         xhrClear.open('POST', 'updateNotificationTable.php', true);
                         xhrClear.onload = function () {
                             if (xhrClear.status === 200) {
-                                alert("Clear Response: " + xhrClear.responseText);
+                                // alert("Clear Response: " + xhrClear.responseText);
                             } else {
                                 alert(`Error in rm.php: ${xhrClear.status}`);
                             }
@@ -317,6 +335,7 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
             </body>
 
             </html>
+
 
             <?php
 
