@@ -2,7 +2,7 @@
 For Hide The Actual Source Code -->
 
 <?php
-session_start();
+
 
 require_once 'config.php';
 if (isset($_GET['checkName'], $_GET['checkPassword'])) {
@@ -47,6 +47,7 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                     <div class="list">
                         <ul id="userList">
                             <?php
+                            // $myName="GRKCHECK";
                             if (!empty($users)) {
                                 foreach ($users as $user) {
                                     echo "<li onclick='secondPersonData(" . $user['name'], $user['profile'] . ")' data-id='" . $user['id'] . "'  data-name='" . $user['name'] . "' data-profile='" . $user['profile'] . "' >
@@ -79,14 +80,11 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                             </div>
                             <div class="profile-name"><?php // echo $user['name'] ?></div>
                         </div>
-
-                        <!-- <div class="close-chat">X</button></div> -->
-
                         <div class="first-person " data-my-id='<?php echo $existUser[0]['id'] ?>'>
                             <div class="profile-pic">
                                 <img src="<?php // echo $myProfile ?>" class="img-fluid" alt="Your Name">
                             </div>
-                            <div class="profile-name"><?php echo $myName ?></div>
+                            <div class="profile-name"><?php echo $myName; ?></div>
                         </div>
                     </div>
 
@@ -98,60 +96,12 @@ if (isset($_GET['checkName'], $_GET['checkPassword'])) {
                                     <div class="sections message-receive">
                                         <h6 class="heading"><u>RECEIVED MESSAGES</u> <i class="icon ri-corner-right-up-fill"></i>
                                         </h6>
-                                        <div class="all-texts">
-                                            <?php
-                                            // require_once 'config.php';
-                                            //     $stmt = $pdo->prepare("SELECT message FROM send_messages WHERE fromUserId = ? AND toUserId= ?;");
-                                            //     $stmt->execute([1, 2]);
-                                            //     $messages = $stmt->fetchAll();
-                                            //     if ($messages) {
-                                            //         foreach ($messages as $message) {
-                                            //             echo "<div class='go'>
-                                            //                 <div class='text'>
-                                            //                     " . $message['message'] . "
-                                            //                 </div>
-                                            //             </div>";
-                                            //         }
-                                            //     } else {
-                                            //         echo "<div class='go'>
-                                            //         <div class='text'>
-                                            //             SELECT message FROM send_messages WHERE fromUserId = " . $existUser[0]['id'] . " AND toUserId= " . $toSendId . ";
-                                            //         </div>
-                                            //     </div>";
-                                            //     }
-                                            ?>
-                                        </div>
+                                        <div class="all-texts"></div>
                                     </div>
 
                                     <div class=" sections message-sent">
                                         <h6 class="heading"><u>SENT MESSAGES</u> <i class="icon ri-corner-right-down-fill"></i></h6>
-                                        <div class="all-texts">
-                                            <?php
-                                            // require_once 'config.php';
-                                            // if (isset($_POST['choosedId'])) {
-                                            // $toSendId = $_POST['choosedId'];
-                                            // $toSendId = $_SESSION['choosedId'];
-                                            // echo "<script>alert('toSendId Is:  $toSendId ');</script>";
-                                            // $stmt = $pdo->prepare("SELECT message FROM send_messages WHERE fromUserId = ? AND toUserId= ?;");
-                                            // $stmt->execute([1, 2]);//here This toSendId Is A JS Variable How To Get THat's Value In PHP
-                                            // $messages = $stmt->fetchAll();
-                                            // if (!empty($messages)) {
-                                            //     foreach ($messages as $message) {
-                                            //         echo "<div class='go'>
-                                            //             <div class='text'>
-                                            //                 " . $message['message'] . "
-                                            //             </div>
-                                            //         </div>";
-                                            //     }
-                                            // } else {
-                                            //     echo "<div class='go'>
-                                            //     <div class='text'>
-                                            //         SELECT message FROM send_messages WHERE fromUserId = " . $existUser[0]['id'] . " AND toUserId= " . $toSendId . ";
-                                            //     </div>
-                                            // </div>";
-                                            // }
-                                            ?>
-                                        </div>
+                                        <div class="all-texts"></div>
                                     </div>
                                 </div>
                             </div>
