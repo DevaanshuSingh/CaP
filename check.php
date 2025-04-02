@@ -1,44 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Camera with Button</title>
-    <style>
-        .response {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <button onclick="callAJAX(1)" class="btn">AJAX</button>
-    <div class="response" id="response"></div>
 
-    <script>
-        function callAJAX(toSendId) {
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'check.php', true);  // The same PHP file
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    document.getElementById('response').innerHTML = `Response From Here: ${xhr.responseText}<br>To Here`; 
-                } else {
-                    document.getElementById('response').innerHTML = `Error From Here: ${xhr.statusText}<br>To Here`;
-                }
-            };
-
-            xhr.onerror = function () {
-                document.getElementById('response').innerText = "AJAX Request Failed";
-            };
-
-            // Sending toSendId to the server
-            xhr.send('checking=' + encodeURIComponent(toSendId));
-        }
-    </script>
-</body>
-</html> -->
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checking'])) {
     $checking = $_POST['checking'];
